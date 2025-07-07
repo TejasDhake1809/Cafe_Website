@@ -1,0 +1,159 @@
+.landing-card-specialities{
+    height : 90vh;
+    width : 100%;
+    background-image : url("Specialities_Background.jpeg");
+    background-repeat : no-repeat;
+    background-size : cover;
+    background-position : center;
+    position : relative;
+    padding : 10px;
+    display : flex;
+    font-family : "Cabin", sans-serif;
+    margin : 0 -8px;
+}
+
+.landing-card-details-specialities {
+    height : 90vh;
+    width : 40%;
+    /* border : 1px solid white;    */
+    font-size : 1.5rem;
+    display : flex;
+    flex-flow : column;
+    padding : 10px;
+    align-self : flex-end;
+    justify-content : space-around;
+}
+
+.some-title-igiveup {
+    font-size : 6rem;
+    font-family : "Caveat", sans-serif;
+}
+
+.landing-card-details-specialities p{
+    color : white;
+}
+.landing-card-details-specialities button{
+    align-self : left;
+    height : 6vh;
+    width : 40%;
+    font-size : 1.2rem;
+    border-radius : 70px;
+    background-color : #F4A261;
+    border : none;  
+    color : white;
+    cursor : pointer;
+}
+
+.landing-card-details-specialities button:hover {
+    background-color : white;
+    color : #F4A261;
+    border : 2px solid #F4A261;
+    transition : background-color 0.5s ease, color 0.5s ease;
+    
+}
+
+.tagline-specialities {
+    font-size : 3em;
+    text-align : center;
+}
+
+.specialities-containers-1{
+    height : 60vh; 
+    width : 100vw;
+    display : flex;
+    flex-wrap : wrap;
+    justify-content : center;
+    align-items : center;
+    background-image : url('Specialities_Food.jpeg');
+    background-repeat : no-repeat;
+    background-size : cover;
+    background-attachment : fixed;
+    margin : 0 -8px;
+}
+
+.specialities-containers-1 p{
+    font-family : "Cabin", sans-serif;    
+    color : white;
+    font-size : 6em;
+    text-decoration : underline rgba(256,256,256,1);
+    padding : 10px;
+}
+
+.specialities-containers-2{
+    height : 60vh; 
+    width : 100vw;
+    display : flex;
+    flex-wrap : wrap;
+    justify-content : center;
+    align-items : center;
+    background-image : url('Breads.jpg');
+    background-repeat : no-repeat;
+    background-size : cover;
+    background-attachment : fixed;
+    margin : 0 -8px;
+}
+
+.specialities-containers-2 p{
+    font-family : "Cabin", sans-serif;
+    color : white;
+    font-size : 6em;
+    text-decoration : underline rgba(256,256,256,1);
+    padding : 10px;
+}
+
+.specialities-containers-3{
+    height : 60vh; 
+    width : 100vw;
+    display : flex;
+    flex-wrap : wrap;
+    justify-content : center;
+    align-items : center;
+    background-image : url('Coffee.jpeg');
+    background-repeat : no-repeat;
+    background-size : cover;
+    background-attachment : fixed;
+    margin : 0 -8px;
+}
+
+.specialities-containers-3 p{
+    font-family : "Cabin", sans-serif;
+    color : white;
+    font-size : 6em;
+    text-decoration : underline rgba(256,256,256,1);
+    padding : 10px;
+}
+
+.description {
+    display : grid;
+    height : 70vh;
+    width : 100%;
+    grid-template-columns : 1fr 1fr;
+    grid-template-rows : 1fr;
+    text-align : center;
+    justify-items : center;
+    align-items : center;
+    grid-gap : 10px;
+    padding : 10px;
+    font-family : "Cabin", sans-serif;
+    background-color : white;
+}
+
+.description div {
+    height : 65vh;
+    width : 80%;
+    padding : 10px;
+    display : flex;
+    justify-contents : center;
+    align-items : center;
+}
+
+.griditems {
+    font-size : 1.8rem;
+}
+
+.griditems img {
+    /* border-radius : 50px; */
+    height : 80%;
+    width : 100%;
+    object-fit : cover;
+}

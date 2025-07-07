@@ -1,0 +1,88 @@
+.filterlogos {
+    display : flex;
+    flex-flow : row wrap;
+    justify-content : center;
+    align-items : center;
+    height : 30vh;
+    width : 60vw;
+    gap : 20px;
+    /* border : 1px solid black; */
+    margin : auto;
+}
+
+.filterlogos button {
+    height : 40%;
+    width : auto;
+    padding : 10px;
+    font-size : 2rem;
+}
+
+.filterlogos img {
+    height : 50px;
+    width : 50px;
+}
+
+body { 
+    background-color : rgba(0,0,0,0.05);
+}
+
+.filtersbtn {
+    display : flex;
+    align-items : center;
+    gap : 10px;
+    border : none;
+    cursor : pointer;
+    border-radius : 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family : "Cabin", sans-serif;
+}
+
+.filtersbtn:hover {
+    /* background-color : rgba(0,0,0,0.08); */
+}
+
+.filtersbtnactive {
+    background-color: black; /* light grey or any highlight color */
+    color : white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition : background-color 0.5s ease;
+}
+
+.products-container {
+    display : flex;
+    flex-flow : row wrap;
+    justify-content : center;
+    align-items : center;
+    margin : auto;
+    gap : 20px;
+    background-color : white;
+    padding : 10px;
+}
+
+.fixed-order-button {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    gap : 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color : orange;
+    height : 70px;
+    width : 150px;
+    color : white;
+    border-radius : 20px;
+    border : none;
+    font-family : "Cabin", sans-serif;
+    font-size : 1.5rem;
+    cursor : pointer;
+    font-weight : 700;
+}
+
+.fixed-order-button:hover {
+    background-color : white;
+    color : orange;
+    border : 1px solid orange;
+    transition : background-color 0.7s ease, border 0.7s ease;
+}

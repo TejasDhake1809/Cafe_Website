@@ -1,0 +1,52 @@
+.selection-menu {
+    background-color : black;
+}
+
+.br {
+    height : 10px;
+}
+
+.selection-menu-title {
+    text-align : center;
+    font-family : "Cabin", sans-serif;
+    font-size : 2em;
+    color : white;
+    margin-top : 30px;
+}
+
+.selection-menu-options {
+    display : flex;
+    flex-flow : column;
+    height : 98%;
+    /* justify-content : space-around; */
+    align-items : center;
+    /* border : 1px solid white; */
+}
+
+.btn:hover {
+    cursor : pointer;
+}
+
+.btn {
+    height : 8%;
+    width : 60%;
+    background-color : black;
+    border : none;
+    color : white;  
+    font-size : 1.2em;
+    border-radius : 50px;
+    transition : background-color 0.5s ease, color 0.5s ease;
+    text-align : left;
+    padding-left : 30px;
+    font-family : "Roboto", sans-serif;
+}
+
+/* .btn img {
+    background-color : white;
+} */
+
+.active-btn { 
+    background-color : white;
+    color : black;  
+    transition : background-color 0.5s ease, color 0.5s ease;
+}

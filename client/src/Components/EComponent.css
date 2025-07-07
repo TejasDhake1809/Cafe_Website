@@ -1,0 +1,40 @@
+
+
+.ECompWrapper {
+    height: 100%;
+    width: 100%;
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center children vertically in the container */
+    align-items: center; /* Center children horizontally in the container */
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; /* Essential for positioning the overlay and content relative to it */
+}
+
+.overlay {
+    position: absolute; /* Position the overlay absolutely within the wrapper */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% black */
+    z-index: 1; /* Ensure overlay is behind content but above background */
+}
+
+.ECompWrapper-content {
+    text-align: center;
+    font-size: 1.7rem;
+    color: white;
+    position: relative;
+    z-index: 2; 
+    height : 100%;
+    display: grid;
+    grid-row: 1 / span 2;
+    justify-items: center; 
+    align-items: center; 
+    font-family: "Cabin", serif;
+    padding: 10px;
+
+}

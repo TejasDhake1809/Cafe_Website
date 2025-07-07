@@ -1,0 +1,14 @@
+/* .menuCardWrapper {
+    display : flex;
+    flex-flow : row;
+    align-items : center;
+    justify-content : center;
+    height : auto;
+    width : auto;
+    border : 10ps solid red;
+} */    
+
+/* .menuCardWrapper {
+    display : flex;
+    flex-flow : row wrap;
+} */

@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Live Streaming Events",
+      "content": "Join us every weekend for live streaming of local music bands and spoken word performances. Enjoy your favorite coffee while tuning in to top local talent broadcasted directly from our cafe stage.",
+      "photo": "/live-streaming.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Karaoke Nights",
+      "content": "Unleash your inner superstar during our weekly Karaoke Nights! Grab the mic, sing your heart out, and cheer on your friends with a side of delicious desserts and handcrafted drinks.",
+      "photo": "/karaoke.jpg"
+    },
+    {
+      "id": 3,
+      "title": "In-House Coffee Roasting Sessions",
+      "content": "Experience the magic of coffee like never before. Watch our baristas roast beans in-house while learning about origin, flavor profiles, and the roasting process. Freshly roasted bags available for purchase after each session.",
+      "photo": "/in-house-events.jpg"
+    }
+  ]
+}

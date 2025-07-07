@@ -1,0 +1,31 @@
+.footer-container {
+    height : 30vh; 
+    width : 100vw;
+    display : flex;
+    justify-content : space-around;
+    align-items : center;
+    background-color : black;
+    font-family : "Cabin", sans-serif;
+    margin : 0 -8px;
+}
+
+.footer-container a {
+    text-decoration : none;
+    border-radius : 5px;
+    border : 1px solid black;
+    padding : 5px;
+    color : white;
+}
+
+
+.footer-container a:hover {
+    border-radius : 5px;
+    border : 1px solid black;
+    padding : 5px;
+    color : rgba(255,255,255,0.5);
+}
+
+.footer-container p {
+    color : white;
+}
+

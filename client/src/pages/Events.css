@@ -1,0 +1,70 @@
+.tagline-events {
+    font-size : 2.5rem;
+    text-align : center;
+    /* background-image : url('Bread.jpg');
+    background-attachment : fixed; */
+    height : 40vh;
+    color : white;
+    display : flex;
+    background-repeat : no-repeat;
+    background-size : cover;
+    justify-content : center;
+    align-items : center;
+    font-family : "Cabin", sans-serif;
+    font-weight : 400;
+}
+
+.landing-card-events{
+    height : 90vh;
+    width : 100vw;
+    background-image : url("Events_Background.jpg");
+    background-repeat : no-repeat;
+    background-size : cover;
+    background-position : center;
+    position : relative;
+    padding : 10px;
+    display : flex;
+    font-family : "Cabin", sans-serif;
+    margin : -8px;
+}
+
+.landing-card-details-events {
+    height : 50vh;
+    width : 40%;
+    /* border : 1px solid white;    */
+    font-size : 2em;
+    display : flex;
+    flex-flow : column;
+    padding : 10px;
+    align-self : flex-end;
+    justify-content : space-around;
+}
+
+.landing-card-details-events p{
+    color : white;
+}
+.landing-card-details-events button{
+    align-self : left;
+    height : 6vh;
+    width : 40%;
+    font-size : 1.2rem;
+    border-radius : 100px;
+    background-color : #F4A261;  
+    color : #1E1E1E;
+    border : none;
+    font-family : "Roboto", sans-serif;
+    cursor : pointer;
+}
+
+.landing-card-details-events button:hover {
+    background-color : #1E1E1E;
+    color : #F4A261;
+    border : 1px solid #F4A261;
+    transition : background-color 0.5s ease, color 0.5s ease;
+}
+
+.cards-container {
+    height : 100vh;
+    width : 97vw;
+}
+

@@ -1,0 +1,60 @@
+
+//div that wraps the entire card
+.card-wrapper {
+    display : flex;
+    flex-direction : column;
+    height : 100%;
+    border : 1px solid black;
+    width : 20%;
+    justify-content : center;
+    position : relative;
+    align-items : center;
+    padding : 5px;
+    border-radius :  20px;
+    background-color : white;
+    font-family : "Cabin", sans-serif;
+}
+
+.card-image {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.card-wrapper p {
+    text-align : center;
+    font-family : "Cabin", sans-serif;
+    max-width : 200px;
+}
+
+.card-image img{
+    height : 180px;
+    width : 180px;
+    border-radius : 20px;
+}
+
+/* .card-button {
+  height : 50px;
+  width : 200px;
+  font-family : "Cabin", sans-serif;
+  border : none;
+  background-color : lightgreen;
+  border-radius : 30px;
+  font-size : 1.3rem;
+  cursor : pointer;
+}
+
+.card-button:hover {
+  background-color : white;
+  border : 1px solid lightgreen;
+} */
+
+.card-details {
+    display : flex;
+    flex-direction : column;
+    justify-items : space-between;
+    position : relative;
+    align-items : center;
+    margin : 0.5em;
+    font-size : 1.1rem;
+}

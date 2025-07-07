@@ -1,0 +1,63 @@
+.descriptiondiv {
+    display : grid;
+    height : 85vh;
+    width : 100%;
+    grid-template-columns : 1fr 1fr;
+    grid-template-rows : 1fr;
+    text-align : center;
+    justify-items : center;
+    align-items : center;
+    grid-gap : 20px;
+    background-color : black;
+    color : white;
+    font-size : 1.5rem;
+    font-family : "Montserrat", sans-serif;
+    font-weight : 500;
+    padding : 20px;
+    margin : 0 -8px;
+}
+
+.descriptiondiv div {
+    height : 100%;
+    width : 100%;
+    padding : 10px;
+    display : flex;
+    flex-flow : column;
+    justify-content : center;
+    align-items : center;
+    overflow : hidden;
+    gap : 60px;
+}
+
+.explore-specialities {
+    display : flex;
+    align-items : center;
+    font-size : 1.3rem;
+    border-radius : 10px;
+    background-color : #FFFDD0;
+    font-family : "Cabin", sans-serif;
+    color : black;
+    gap : 20px;
+    border : none;
+    cursor : pointer;
+    height : 8vh;
+    padding : 10px;
+    width : 20vw;
+    justify-content : center;
+}
+
+.explore-specialities:hover {
+    background-color : black;
+    border : 1px solid #FFFDD0;
+    color : #FFFDD0;
+    transition : background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+.grid-items img {
+    height : 100%;
+    width : 100%;
+}
+
+.grid-items-para {
+    max-width : 90%;
+}

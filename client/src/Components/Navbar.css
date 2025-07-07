@@ -1,0 +1,114 @@
+/* .navbar{
+    display : flex;
+    justify-content : space-around;
+    align-items : center;
+    padding : 10px;
+    height : 3em;
+    text-decoration : none;
+    position : fixed;
+    top : 0;
+    z-index : 1000;
+}
+
+.navbar h1 {
+    font-size : 30px;
+    color : black;
+}
+
+p {
+    display : inline;
+    margin : 0px 5px;
+    color : black;
+    cursor : pointer;
+    transition : all 0.3s ease;
+}
+
+a:hover {
+    color: rgba(0,0,0,0.5); 
+}
+
+a {
+    text-decoration : none;
+    color : black;
+} */
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family : "Oswald", sans-serif;
+    font-weight : 500;
+    padding: 10px;
+    height: 3em;
+    background-color: #B49C89; /* Add a background color to make the navbar visible */
+    text-decoration: none;
+    position: fixed;
+    top: 0;
+    color : #2C2C2C;
+    left : 0;
+    width: 100%; /* Ensure the navbar spans the full width */
+    z-index: 1000;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.navbar h1 {
+    font-size: 30px;
+    margin: 0; /* Prevent extra margin that might affect alignment */
+}
+
+.navbar a {
+    text-decoration: none;
+    margin: 0 10px; /* Space between links */
+    transition: color 0.3s ease; /* Smooth transition on hover */
+    font-size: 16px; /* Adjust font size */
+}
+
+.navbar a:visited {
+  color: #1E1E1E; /* match the default to prevent purple */
+}
+
+.navbar a:hover {
+    color: rgba(0, 0, 0, 0.5); /* Change color on hover */
+}
+
+.logoutbutton {
+    height : 40px;
+    width : 70px;
+    background-color : #04AA6D;
+    color : white;
+    font-size : 1em;
+    font-family : "Oswald",sans-serif;
+    border-radius : 10px;
+}
+
+.logoutbutton:hover {
+    background-color : white;
+    cursor : pointer;
+    transition: all 0.3s ease;
+    color : black;
+
+}
+
+.dropdown {
+    position : relative;
+    display : inline-block;
+}
+
+.dropdown-content {
+    display : none;
+    position : absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    height : 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+

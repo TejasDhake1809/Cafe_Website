@@ -1,0 +1,18 @@
+.order-headers {
+    display : flex;
+    align-items : center;
+    height : 15vh;
+    width : 100vw;
+    background-color : white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family : "Cabin", sans-serif;
+    margin : -8px;
+    font-size : 2rem;
+    gap : 10px;
+}
+
+.order-headers img {
+    height : 15vh;
+    width : 8vw;
+    background-color : rgba(0,0,0,0.05);
+}

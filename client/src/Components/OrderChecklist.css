@@ -1,0 +1,36 @@
+.item-grid {
+    font-family : "Cabin", sans-serif;
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+    grid-template-rows : 1fr;
+    align-items : center;
+    justify-items : center;
+
+}
+
+.item-name {
+    font-size : 1.2rem;
+    color : #5d615c;
+}
+
+.item-quantity {
+    font-size : 1.3rem;
+    color : ##2e3333;
+}
+
+.item-price {
+    font-size : 1.1rem;
+    color : ##2e3333;
+}
+
+.item-grid > :nth-child(3n + 2) {
+  justify-self: start;
+}
+
+.divider-line {
+  width: 90%;
+  height: 1px;               /* Thin line */
+  background-color: #ccc;    /* Light gray (softer than 'gray') */
+  margin: 8px auto;             /* Optional spacing above and below */
+  
+}
