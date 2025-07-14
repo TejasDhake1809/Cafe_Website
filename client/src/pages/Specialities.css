@@ -1,7 +1,7 @@
 .landing-card-specialities{
     height : 90vh;
     width : 100%;
-    background-image : url("Specialities_Background.jpeg");
+    background-image : url("/Specialities_Background.jpeg");
     background-repeat : no-repeat;
     background-size : cover;
     background-position : center;
@@ -64,7 +64,7 @@
     flex-wrap : wrap;
     justify-content : center;
     align-items : center;
-    background-image : url('Specialities_Food.jpeg');
+    background-image : url('/Specialities_Food.jpeg');
     background-repeat : no-repeat;
     background-size : cover;
     background-attachment : fixed;
@@ -86,7 +86,7 @@
     flex-wrap : wrap;
     justify-content : center;
     align-items : center;
-    background-image : url('Breads.jpg');
+    background-image : url('/Breads.jpg');
     background-repeat : no-repeat;
     background-size : cover;
     background-attachment : fixed;
@@ -108,7 +108,7 @@
     flex-wrap : wrap;
     justify-content : center;
     align-items : center;
-    background-image : url('Coffee.jpeg');
+    background-image : url('/Coffee.jpeg');
     background-repeat : no-repeat;
     background-size : cover;
     background-attachment : fixed;
@@ -248,7 +248,7 @@
     font-size: 0.8rem;
     height : 100%;
     padding: 10px;
-    /* background-color : rgba(0,0,0,0.5); */
+    background-color : rgba(0,0,0,0.5);
   }
 
   .landing-card-details-specialities button {

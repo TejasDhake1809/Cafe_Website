@@ -17,7 +17,7 @@
 .landing-card-events{
     height : 90vh;
     width : 100vw;
-    background-image : url("Events_Background.jpg");
+    background-image : url("/Events_Background.jpg");
     background-repeat : no-repeat;
     background-size : cover;
     background-position : center;
