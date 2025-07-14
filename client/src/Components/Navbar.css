@@ -62,6 +62,7 @@ a {
     margin: 0 10px; /* Space between links */
     transition: color 0.3s ease; /* Smooth transition on hover */
     font-size: 16px; /* Adjust font size */
+    color: #1E1E1E;
 }
 
 .navbar a:visited {
