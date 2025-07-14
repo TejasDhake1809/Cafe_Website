@@ -10,6 +10,10 @@
     "lint": "eslint .",
     "postinstall": "chmod +x node_modules/.bin/vite"
   },
+  "engines": {
+    "node": "18.x"
+  },
+
   "author": "Tejas Dhake",
   "license": "MIT",
   "dependencies": {
