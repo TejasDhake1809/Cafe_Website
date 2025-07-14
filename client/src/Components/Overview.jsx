@@ -11,10 +11,11 @@ const Overview = () => {
     const [orders,setOrders] = useState([]);
     const [revenue, setRevenue] = useState([]);
     const [label, setLabel] = useState([]);
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/orders/get-order", {
+                const res = await axios.get(`${baseUrl}/api/orders/get-order`, {
                     params : {limit : 10}
                 });
                 setOrders(res.data);
@@ -33,7 +34,7 @@ const Overview = () => {
     useEffect(() => {
         const fetchData = async() => {
             try {
-                const response = await axios.get("http://localhost:3000/api/orders/overview");
+                const response = await axios.get(`${baseUrl}/api/orders/overview`);
                 if (response.data) {
                     setData(response.data);
                 }
@@ -48,7 +49,7 @@ const Overview = () => {
     useEffect(() => {
         const fetchBarChartStats = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/orders/chart/bar");
+                const response = await axios.get(`${baseUrl}/api/orders/chart/bar`);
                 const pdata = response.data.revenue;
                 const labels = response.data.label;
                 setLabel(labels);

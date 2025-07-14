@@ -5,6 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const AddItem = () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const navigate = useNavigate();
     const [data,setData] = useState({
         name : '',
@@ -36,7 +37,7 @@ const AddItem = () => {
             const formData = new FormData();
             formData.append('file', selectedFile);
 
-            const uploadImage = await axios.post('http://localhost:3000/api/upload', formData);
+            const uploadImage = await axios.post(`${baseUrl}/api/upload`, formData);
             imageUrl = uploadImage.data.imageUrl;
 
         } catch (error) {
@@ -47,12 +48,12 @@ const AddItem = () => {
         const finalData = {
             ...data,
             image : imageUrl,
-            price : parseFloat(data.price), // ✅ convert string to number here
+            price : parseFloat(data.price), // convert string to number here
         };
         console.log({finalData});
 
         try {
-            const upload = await axios.post('http://localhost:3000/api/add-item', finalData);
+            const upload = await axios.post(`${baseUrl}/api/add-item`, finalData);
             if (upload){
                 setData({
                     name: '',

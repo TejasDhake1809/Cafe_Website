@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import OrderUpdate from './OrderUpdate';
 
 const Orders = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [ordersClassName, setOrdersClassName] = useState('');
   const [revenueClassName, setRevenueClassName] = useState('');
   const [aovClassName, setAovClassName] = useState('');
@@ -20,7 +21,7 @@ const Orders = () => {
 
   const fetchStats = async (timeframe, field) => {
     try {
-      const res = await axios.get("http://localhost:3000/api/orders/stats", {
+      const res = await axios.get(`${baseUrl}/api/orders/stats`, {
         params: { timeframe: timeframe || 'All' }
       });
       if (res.data) {

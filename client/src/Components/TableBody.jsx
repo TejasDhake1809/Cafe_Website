@@ -5,12 +5,13 @@ import toast from 'react-hot-toast'
 
 const TableBody = (props) => {
     const [mouseOn, setMouseOn] = useState(false);
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const handleClick = async() => {
         const confirmDelete = window.confirm("Are you sure you want to delete this item?");
         if (!confirmDelete) return;
 
         try {
-            const response = await axios.delete(`http://localhost:3000/api/items/${props.id}`);
+            const response = await axios.delete(`${baseUrl}/api/items/${props.id}`);
             toast.success(response.data.success);
         } catch (error) {
             toast.error(error.response?.data?.error || "Failed to delete item");

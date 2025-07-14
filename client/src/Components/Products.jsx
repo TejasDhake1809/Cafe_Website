@@ -11,14 +11,14 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const[bestselling, setBestselling] = useState([]);
   const [active,setActive] = useState("");
-
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const handleAddClick = () => {
     navigate("/add-item")
   }
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/items", {
+        const response = await axios.get(`${baseUrl}/api/items`, {
           params : {category : active}
         })
         if (response) {
@@ -33,7 +33,7 @@ const Products = () => {
 
     const fetchLimitedData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/items/limited-items", {
+        const res = await axios.get(`${baseUrl}/api/items/limited-items`, {
           params : {
             category : active,
             limit : 3

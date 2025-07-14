@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import MenuCard from './MenuCard';
 
 const MenuCardWrapper = (props) => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const [products, setProducts] = useState([]);
 
     useEffect(() =>{
         const fetchItems = async () => {
             try {
-                const items = await axios.get('http://localhost:3000/api/items', {
+                const items = await axios.get(`${baseUrl}/api/items`, {
                     params: props.category !== "" ? { category: props.category } : {}
                 });
                 setProducts(items.data);

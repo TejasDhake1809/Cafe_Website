@@ -17,11 +17,11 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json())
 app.use(express.urlencoded({extended : false}));
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.CLIENT_URL,
   credentials: true
 }));
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use('/', userRoutes)
 app.use('/api', productRoutes)

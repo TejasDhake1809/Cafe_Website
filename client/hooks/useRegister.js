@@ -8,11 +8,13 @@ export const useRegister = () => {
     const {dispatch} = useAuthContext();
     const navigate = useNavigate();
 
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
     const register = async (email, password) => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch ('http://localhost:3000/register',{
+        const response = await fetch (`${baseUrl}/register`,{
             method: 'POST',
             headers : {'Content-Type': 'application/json'},
             body : JSON.stringify({email, password})

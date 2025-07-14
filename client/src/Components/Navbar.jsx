@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${menuOpen ? 'responsive' : ''}`}>
-      <h1>Koe-Da-Kafe</h1>
+      <h1>Cafe Velvet Roast</h1>
       <button className="menu-toggle" onClick={toggleMenu}>☰</button>
         <p><Link to="/">Home</Link></p>
         <p><Link to="/Menu">Menu</Link></p>

@@ -7,6 +7,7 @@ import axios from 'axios';
 import PaymentTypePieChart from './PaymentTypePieChart';
 
  const Analytics = () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const [revenue, setRevenue] = useState([]);
     const [label, setLabel] = useState([]);
     const [pieStats, setPieStats] = useState({
@@ -42,7 +43,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
 
     const fetchStats = async (timeframe, field) => {
         try {
-           const response = await axios.get("http://localhost:3000/api/orders/data", {
+           const response = await axios.get(`${baseUrl}/api/orders/data`, {
             params : {timeframe : timeframe || 'All'}
            });
            const data = response.data;
@@ -68,7 +69,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
     useEffect(() => {
         const fetchBarChartStats = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/orders/chart/bar");
+                const response = await axios.get(`${baseUrl}/api/orders/chart/bar`);
                 const pdata = response.data.revenue;
                 const labels = response.data.label;
                 setLabel(labels);
@@ -85,7 +86,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
     useEffect(() => {
         const fetchPieChartStats = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/orders/chart/pie");
+                const res = await axios.get(`${baseUrl}/api/orders/chart/pie`);
                 const udata = res.data;
                 setPieStats(udata);
                 // console.log("this is udata : ", udata);

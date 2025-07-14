@@ -7,12 +7,12 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null);
     const {dispatch} = useAuthContext();
     const navigate = useNavigate();
-
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const login = async (email, password) => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch ('http://localhost:3000/login',{
+        const response = await fetch (`${baseUrl}/login`,{
             method: 'POST',
             headers : {'Content-Type': 'application/json'},
             body : JSON.stringify({email, password})

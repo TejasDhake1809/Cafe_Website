@@ -19,7 +19,7 @@ const OrderReview = () => {
     const[ address, setAddress] = useState("");
     const [hover,setHover] = useState(false);
     const [totalAmount, setTotalAmount] = useState(20); 
-
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;  
 
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
@@ -42,12 +42,12 @@ const OrderReview = () => {
                     toast.error("Please enter a delivery address", {id : toastId});
                     return;
             }
-            const seqRes = await axios.post("http://localhost:3000/api/payment/next-sequence");
+            const seqRes = await axios.post(`${baseUrl}/api/payment/next-sequence`);
             const nextSeq = seqRes.data;
 
             console.log(nextSeq);
             if(nextSeq){
-                const res = await axios.post("http://localhost:3000/api/payment/create-order", {
+                const res = await axios.post(`${baseUrl}/api/payment/create-order`, {
                 email : user.email,
                 address : address,
                 price : totalAmount,
@@ -91,7 +91,7 @@ const OrderReview = () => {
 
         const fetchProducts = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/api/items');
+                const res = await axios.get(`${baseUrl}/api/items`);
                 if (res) {
                     setProducts(res.data);
                 }

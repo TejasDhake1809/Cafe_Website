@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const useRazorpayPayment = () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const navigate = useNavigate();
     const pay = useCallback(async (amount,address,email) => {
 
@@ -15,7 +16,7 @@ const useRazorpayPayment = () => {
         return new Promise(async (resolve, reject) => {
             const toastId = toast.loading("🕐 Initiating payment...");
             try {
-            const res = await axios.post('http://localhost:3000/api/payment/razorpay', {amount});
+            const res = await axios.post(`${baseUrl}/api/payment/razorpay`, {amount});
             const order = res.data;
 
              const options = {
@@ -36,7 +37,7 @@ const useRazorpayPayment = () => {
                 handler: async function (response) {
                     toast.loading("🧾 Verifying payment...", { id: toastId });
                     try {
-                        const verifyRes = await axios.post('http://localhost:3000/api/payment/verify', {
+                        const verifyRes = await axios.post(`${baseUrl}/api/payment/verify`, {
                             razorpay_order_id: response.razorpay_order_id,
                             razorpay_payment_id: response.razorpay_payment_id,
                             razorpay_signature: response.razorpay_signature
@@ -44,7 +45,7 @@ const useRazorpayPayment = () => {
     
                             if (verifyRes.data.success) {
                                 try {
-                                    const ordercreation = await axios.post('http://localhost:3000/api/payment/create-order', {
+                                    const ordercreation = await axios.post(`${baseUrl}api/payment/create-order`, {
                                         razorpay_order_id: response.razorpay_order_id,
                                         razorpay_payment_id: response.razorpay_payment_id,
                                         razorpay_signature: response.razorpay_signature,
