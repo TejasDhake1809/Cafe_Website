@@ -101,3 +101,76 @@
     color : black;
     transition : background-color 0.5s ease;
 }
+
+/* Base styles unchanged */
+
+/* Tablet (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .menuCardWrap {
+    width: 40vw;
+    border-radius: 40px;
+  }
+
+  .menuCardWrap img {
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  .menuCardDetails span {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .menuCardName {
+    font-size: 1.5em;
+  }
+
+  .menuCardPrice {
+    font-size: 1.2em;
+  }
+
+  .menuCardOrderButton button {
+    height: 35px;
+    width: 35px;
+    font-size: 1rem;
+  }
+
+  .menuCardOrderButton p {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .menuCardWrap {
+    width: 80vw;
+    border-radius: 30px;
+  }
+
+  .menuCardWrap img {
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .menuCardName {
+    font-size: 1.3em;
+  }
+
+  .menuCardPrice {
+    font-size: 1em;
+  }
+
+  .menuCardOrderButton button {
+    height: 30px;
+    width: 30px;
+    font-size: 0.9rem;
+  }
+
+  .menuCardOrderButton p {
+    font-size: 1.1rem;
+  }
+}

@@ -29,3 +29,36 @@
     color : white;
 }
 
+/* --- Responsive Footer for Tablets and Mobiles --- */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 10px;
+    gap: 10px;
+  }
+
+  .footer-container p {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+
+  .footer-container a {
+    display: inline-block;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer-container {
+    gap: 8px;
+  }
+
+  .footer-container p {
+    font-size: 0.95rem;
+  }
+
+  .footer-container a {
+    font-size: 0.95rem;
+  }
+}

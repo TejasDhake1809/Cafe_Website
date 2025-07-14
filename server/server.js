@@ -5,7 +5,7 @@ import userRoutes from './routes/user.js';
 import productRoutes from './routes/product.js'
 import mongoose from 'mongoose';
 import paymentRoutes from './routes/payment.js';
-
+import orderRoutes from './routes/order.js';
 
 const app = express();
 dotenv.config();
@@ -26,6 +26,7 @@ const port = 3000;
 app.use('/', userRoutes)
 app.use('/api', productRoutes)
 app.use('/api/payment', paymentRoutes)
+app.use('/api/orders', orderRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

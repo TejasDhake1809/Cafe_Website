@@ -4,17 +4,19 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import TableBody from './TableBody.jsx';
+import Bestselling from './Bestselling.jsx';
 
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const[bestselling, setBestselling] = useState([]);
   const [active,setActive] = useState("");
 
   const handleAddClick = () => {
     navigate("/add-item")
   }
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAllData = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/items", {
           params : {category : active}
@@ -28,7 +30,25 @@ const Products = () => {
         toast.error ("Failed to fetch items from database");
       }
     }
-    fetchData()
+
+    const fetchLimitedData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/items/limited-items", {
+          params : {
+            category : active,
+            limit : 3
+          }
+        });
+        toast.success("Fetched bestselling items successfully");
+        setBestselling(res.data);
+        console.log(res.data);
+      } catch (error) {
+        toast.error("Failed to fetch bestselling items from database");
+      }
+    }
+
+    fetchAllData();
+    fetchLimitedData();
   },[active])
   // const [products, setProducts] = useState({});
 
@@ -85,7 +105,19 @@ const Products = () => {
                    
                     </table>
         </div>
-        <div className="products-bestselling">products-bestselling <br></br></div>
+        <div className="products-bestselling">
+          <h2>Best Selling Products</h2>
+          {bestselling.map((item) => {
+            return (
+              <Bestselling 
+                key = {item._id}
+                image = {item.image}
+                orderCount = {item.orderCount}
+                name = {item.name}
+              />
+            )
+          })}
+        </div>
     </div>
   )
 }

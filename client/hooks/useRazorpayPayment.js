@@ -26,8 +26,8 @@ const useRazorpayPayment = () => {
                 description: "UPI Payment",
                 order_id: order.id,
                 prefill: {
-                name: "UPI Tester",
-                email: "test@example.com",
+                name: email,
+                email: email,
                 contact: "9999999999"
                 },
                 theme: {
@@ -49,13 +49,15 @@ const useRazorpayPayment = () => {
                                         razorpay_payment_id: response.razorpay_payment_id,
                                         razorpay_signature: response.razorpay_signature,
                                         items : JSON.parse(localStorage.getItem("currentOrder")),
-                                        price : order.amount,
+                                        price : (order.amount)/100,
                                         email : email,
                                         address : address,
                                         payment_type : "online",
                                     })
-                                    if (ordercreation) {console.log(ordercreation);}
+                                    if (ordercreation) {
+                                        console.log(ordercreation);}
                                 } catch (error) {
+                                    toast.dismiss(toastId)
                                     console.log(error);
                                 }
                                 toast.success("✅ Online Payment verified!", {id : toastId});

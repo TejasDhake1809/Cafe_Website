@@ -1,0 +1,17 @@
+.products-bestselling-card {
+    display : flex;
+    flex-flow : column wrap;
+    width : 15vw;
+    height : 40vh;
+    /* border : 1px solid black; */
+    justify-content : center;
+    align-items : center;
+    background-color : white;
+    border-radius : 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.products-bestselling-card img {
+  height : 60%;
+  width : 85%;
+}

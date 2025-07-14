@@ -137,3 +137,92 @@
     color : black;
     margin-bottom : 10px;
 }
+
+/* Base styles unchanged */
+
+/* Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .order-review-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    max-width: 90vw;
+  }
+
+  .order-review-title {
+    font-size: 1.7rem;
+    margin: 20px auto;
+    max-width: 90vw;
+  }
+
+  .payment-methods {
+    width: 100%;
+  }
+
+  .order-review-total {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .order-review-title {
+    font-size: 1.4rem;
+    margin: 15px 10px;
+    height: auto;
+  }
+
+  .order-review-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 15px;
+    padding: 0 10px;
+    max-width: 95vw;
+  }
+
+  .radio-buttons label {
+    height: auto;
+    flex-wrap: wrap;
+    font-size: 1rem;
+  }
+
+  .radio-buttons span img {
+    height: 30px !important;
+    width: auto !important;
+    margin-left: 8px;
+  }
+
+  .fulfillment-details {
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+
+  .deliveryaddress input {
+    font-size: 1rem;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .order-review-total {
+    font-size: 0.9rem;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .order-extra {
+    font-size: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .divider-line {
+    width: 100%;
+  }
+
+  .paybycash button {
+    font-size: 1rem !important;
+    height: 35px !important;
+  }
+}

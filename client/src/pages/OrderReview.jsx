@@ -51,12 +51,12 @@ const OrderReview = () => {
                 email : user.email,
                 address : address,
                 price : totalAmount,
-                items : order.counts,
+                items : order,
                 payment_type : 'cash',
                 cash_order_id : nextSeq
             })
 
-                if (res) {
+                if (res) {                                                           
                     console.log(res);
                     toast.success("Cash order successfully created", {id : toastId});
 

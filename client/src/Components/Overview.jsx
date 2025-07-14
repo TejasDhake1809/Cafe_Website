@@ -1,50 +1,81 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './Overview.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
-import BarChartBox from './BarChartBox.jsx';
-
+import OrderTablebody from './OrderTablebody.jsx';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import OverviewDataBlocks from './OverviewDataBlocks.jsx';
+import SimpleBarChart from './SimpleBarChart.jsx';
 
 const Overview = () => {
+    const [orders,setOrders] = useState([]);
+    const [revenue, setRevenue] = useState([]);
+    const [label, setLabel] = useState([]);
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const res = await axios.get("http://localhost:3000/api/orders/get-order", {
+                    params : {limit : 10}
+                });
+                setOrders(res.data);
+                console.log(res.data);
+                console.log("this is in orders variable of usestate", orders);
+                toast.success("We have successfully fetched orders");
+            } catch (error) {
+                toast.error("Failed to fetch orders from database");
+            }
+        }
+
+        fetchOrders();
+    }, []);
+
+    const [data, setData] = useState({});
+    useEffect(() => {
+        const fetchData = async() => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/orders/overview");
+                if (response.data) {
+                    setData(response.data);
+                }
+            } catch (error) {
+                toast.error("Failed to fetch overview stats");
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchBarChartStats = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/orders/chart/bar");
+                const pdata = response.data.revenue;
+                const labels = response.data.label;
+                setLabel(labels);
+                setRevenue(pdata);
+                toast.success("Bar chart data successfully fetched");
+            } catch (error) {
+                console.error(error.message);
+                toast.error("Bhai jaan galat hua bar chart data");
+            } 
+        }
+        fetchBarChartStats();
+    }, [])
+
   return (
     <div className="overview-grid-container">
         <div className="small-numbers">
-            <div className="small-numbers-div">
-                <div className="small-numbers-text"><p>Orders Today</p>
-                    <span className="small-numbers-count">180</span>
-                </div>
-                <div className="progress-ring-wrapper">
-                    <div className="progress-ring">
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="small-numbers-div">
-                <div className="small-numbers-text"><p>Clients Today</p>
-                    <span className="small-numbers-count">250</span>
-                </div>
-                <div className="progress-ring-wrapper">
-                    <div className="progress-ring">
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <div className="small-numbers-div">
-                <div className="small-numbers-text"><p>Revenue Today</p>
-                    <span className="small-numbers-count">$ 951.70</span>
-                </div>
-                <div className="progress-ring-wrapper">
-                    <div className="progress-ring">
-                        <span></span>
-                    </div>
-                </div>
-            </div>
+            <OverviewDataBlocks field={data.ordersToday} type={"ordersToday"}/>
+            <OverviewDataBlocks field={data.clientsToday} type={"clientsToday"}/>
+            <OverviewDataBlocks field={data.revenueToday} type={"revenueToday"}/>
         </div>
 
         <div className="graphs-orders">
-            <div className="bar-graphs-overview-container">
-                <h3 style={{ textAlign: "center", marginBottom: "10px" }}>Monthly Sales</h3>
-                <BarChartBox />
+            <div className="chart-container-overview">
+                <div className="barchart-overview">
+                    <p>Bar Graph Showing Monthly Revenue</p>
+                    <SimpleBarChart revenue = {revenue} label = {label}/>
+                </div>
             </div>
 
             <div className="orders-list">
@@ -60,28 +91,20 @@ const Overview = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>#001</td>
-                        <td>John Doe</td>
-                        <td>AED 250</td>
-                        <td><span className="status delivered">Delivered</span></td>
-                        </tr>
-                        <tr>
-                        <td>#002</td>
-                        <td>Jane Smith</td>
-                        <td>AED 180</td>
-                        <td><span className="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                        <td>#003</td>
-                        <td>Ali Khan</td>
-                        <td>AED 340</td>
-                        <td><span className="status cancelled">Cancelled</span></td>
-                        </tr>
+                    {orders.map((item) => {
+                       return ( <OrderTablebody 
+                            key = {item._id}
+                            id = {item._id}
+                            customer = {item.email}
+                            amount = {item.price}
+                            status = {item.delivery_status}
+                        />
+                        )
+                    })}
                     </tbody>
                     </table>
                 </div>
-                </div>
+            </div>
         </div>
             
     </div>

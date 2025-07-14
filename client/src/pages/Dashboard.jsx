@@ -3,7 +3,8 @@ import './Dashboard.css'
 import DashboardMenu from '../Components/DashboardMenu.jsx';
 import Overview from '../Components/Overview.jsx';
 import Products from '../Components/Products.jsx';
-
+import Orders from '../Components/Orders.jsx';
+import Analytics from '../Components/Analytics.jsx'
 const Dashboard = () => {
     const [active, setActive] = useState(" ");
   return (
@@ -17,6 +18,8 @@ const Dashboard = () => {
             <div className="dashboard-content">
                 {active === "Overview" && <Overview />}
                 {active === "Products" && <Products />}
+                {active === "Order" && <Orders />}
+                {active === "Analytics" && <Analytics />}
             </div>
         </div>
     </div>

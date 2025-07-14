@@ -7,7 +7,11 @@ const productSchema = new Schema ({
     category : {type : String,required : true},
     description : {type : String,required : true},
     image : {type : String,required : true},
-    price : {type : Number,required : true}
+    price : {type : Number,required : true},
+    orderCount: {
+    type: Number,
+    default: 0
+    }
 }, { timestamps: true });
 
 //static add item method
@@ -30,6 +34,13 @@ productSchema.statics.deleteItem = async function (id) {
     }
 
     return response;
+}
+
+productSchema.statics.updateItemOrderCount = async function (productId, increment = 1, session) {
+    return await this.findByIdAndUpdate(productId,
+        { $inc: {orderCount : increment}},
+        {new : true, session}
+    )
 }
 
 const product = mongoose.model('Product', productSchema);

@@ -19,17 +19,17 @@ const orderSchema = new Schema ({
     }
 });
 
-orderSchema.statics.createOrder = async function(email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature) {
+orderSchema.statics.createOrder = async function(email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature,session) {
     if (razorpay_order_id) {  // only check if this id exists and is truthy
-    const exists = await this.findOne({ razorpay_order_id });
-    if (exists) {
-        throw Error("Order with this order_id exists");
-    }
+        const exists = await this.findOne({ razorpay_order_id }).session(session);
+        if (exists) {
+            throw Error("Order with this order_id exists");
+        }
     }
 
-    const order = await this.create({email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature});
-    return order;
+    const order = await this.create([{email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature}], {session});
+    return order[0];
 }
 
 const order = mongoose.model('Order', orderSchema);
-export default order;
+export default order;   

@@ -1,0 +1,101 @@
+.analytics-grid-container {
+    display : grid;
+    grid-template-columns : 1fr;
+    grid-template-rows : 1fr 3fr;
+    height : 100%;
+    width : 100%;
+    /* border : 1px solid black; */
+    gap : 20px;
+}
+
+.container {
+    gap : 50px;
+}
+
+.orders-stats-div {
+    height : 90%;
+    width : 13vw;
+    /* border : 1px solid black; */
+    gap : 10px;   
+    background-color : white;
+    box-shadow : 0 4px 8px rgba(0,0,0,0.2);
+    border-radius : 0px;
+}
+
+.flexbox-horizontal {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.image-size img {
+    height : 30px;
+    width : 30px;
+}
+
+.active {
+    background-color : black !important;
+    color : white !important;
+    transition : background-color 0.5s ease, color 0.5s ease !important;
+}
+
+.duration-filters-button {
+    border : none;
+    background-color : white;
+    color : black;
+    cursor : pointer;
+    font-family : "Cabin", sans-serif;
+    font-size : 0.7rem;
+    padding : 5px;
+    box-shadow : 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.barchart {
+    width : 50%;
+    background-color : white;
+    display : flex;
+    justify-content : center;
+    /* align-items : center; */
+    flex-flow : column;
+    text-align : center;
+}
+
+.piechart {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.chart-container p {
+    font-size : 1.1rem;
+    font-family : "Cabin", sans-serif;
+}
+
+.chart-container { 
+    display : flex;
+}
+
+.duration-filters-button:hover {
+    background-color : black;
+    color : white;
+    transition : background-color 0.5s ease, color 0.5s ease;
+}
+
+.number-font {
+   font-size : 1.2rem !important;
+   color : black !important;
+}
+
+.stats{
+    display : flex;
+    flex-direction : column;
+    font-family : "Cabin", sans-serif;
+    /* align-items : center; */
+    justify-content : center;
+    gap : 10px;
+}
+
+.stats span {
+    font-size : 0.9rem;
+    color : gray;
+}

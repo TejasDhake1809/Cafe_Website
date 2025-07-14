@@ -24,10 +24,6 @@ const Homepage = () => {
                 <img src={`https://img.icons8.com/?size=100&id=39969&format=png&color=${hover? "000000" : "ffffff"}`} style={{height : "30px", width : "30px"}}></img> </button>
             </div>
 
-            <div className="landing-image">
-                {/* <img src='/landingimage.png' style={{height : "70%", width : "90%", backgroundColor : "white"}}></img> */}
-            </div>
-
         </div>
 
         <Descriptionleft 
@@ -57,9 +53,11 @@ const Homepage = () => {
         <div className='visiting-hours'>
 
             <div className="visiting-hours-text">
-                <h1>Visit Us</h1>
-                <p>Monday-Friday : 9am to 9pm</p>
-                <p>Saturday-Sunday : 9am to 11pm</p>
+                <h1>We're Open!</h1>
+                <p>Join us for your daily brews and bites.</p>
+                <p>Mon–Fri: 9 AM – 9 PM</p>
+                <p>Sat & Sun: 9 AM – 11 PM</p>
+                <p>Whether it's a cozy weekday coffee or a weekend treat — we’re here to serve!</p>
             </div>
 
             <img src="/We're_open.jpg"></img>

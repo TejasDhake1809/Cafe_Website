@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import OrderNavBar from '../Components/OrderNavBar';
 import toast from 'react-hot-toast'
-
+import { useAuthContext } from '../../hooks/useAuthContext';
 const Order = () => {
     const navigate = useNavigate();
-
+    const { user } = useAuthContext();
     const [hover, setHover] = useState(false);
 
     const orangeColor = "ffa500";
@@ -24,6 +24,11 @@ const Order = () => {
         }));
     };
 
+    if (!user) {
+        toast.error("Login to proceed");
+        navigate("/Login");
+    }
+
     const handleClick = () => {
         const orderData = {counts};
         if (Object.keys(counts).length === 0) {
@@ -35,8 +40,6 @@ const Order = () => {
 
         //sending through location state
         navigate("/order-review", {state : orderData});
-
-        
     }
   return (
     <>

@@ -1,5 +1,5 @@
 import express from 'express'
-import { addItem, imageUpload, getAllItems, deleteItem } from '../controllers/productController.js';
+import { addItem, imageUpload, getAllItems, deleteItem, incrementOrderCount, getAnItem } from '../controllers/productController.js';
 import multer from 'multer';
 
 const router = express.Router();
@@ -15,6 +15,12 @@ router.post('/upload', upload.single('file'), imageUpload);
 router.get('/items', getAllItems);
 
 //delete an item route
-router.delete('/items/:id', deleteItem)
+router.delete('/items/:id', deleteItem);
+
+//update order count
+router.post('/items/update', incrementOrderCount);
+
+//get a number of items
+router.get('/items/limited-items', getAnItem);
 
 export default router;

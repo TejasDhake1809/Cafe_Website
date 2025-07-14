@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import './DashboardMenu.css'
+import {useNavigate} from 'react-router-dom';
 
 const DashboardMenu = ({active, setActive}) => {
+    const navigate = useNavigate();
+    if (active === "Home") navigate("/")
   return (
 
     <div className="selection-menu">

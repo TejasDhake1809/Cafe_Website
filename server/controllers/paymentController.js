@@ -4,9 +4,9 @@ import Razorpay from 'razorpay';
 import Crypto from 'crypto';
 import Order from '../model/orderModel.js';
 import Counter from '../model/counterModel.js';
-
+import mongoose from 'mongoose';
+import Product from '../model/productModel.js';
 dotenv.config();
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const razorpay = new Razorpay({
         key_id : process.env.VITE_RAZORPAY_KEY_ID,
@@ -66,12 +66,35 @@ const paymentVerify = async (req,res) => {
 const addOrder = async (req,res) => {
 
     const {email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature } = req.body;
+    const session = await mongoose.startSession();
+    session.startTransaction();
     try {
-        const order = await Order.createOrder(email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature);
-        if (order) {
-            return res.status(200).json(order);
+        const order = await Order.createOrder(email,address,price,items,delivery_status,payment_type,cash_order_id,razorpay_order_id,razorpay_payment_id,razorpay_signature,session);
+        
+        if (!order) {
+            await session.abortTransaction();
+            session.endSession();
+            return res.status(400).json({ error: "Order not created" });
         }
+
+        const updateCount = await Promise.all (
+            Object.entries(items.counts).map(async([productId,incrementBy]) => {
+                try {
+                    const result = await Product.updateItemOrderCount(productId,incrementBy,session);
+                    return result;
+                } catch (error) {
+                    console.error(`Failed to update count for product ${productId}:`, error.message);
+                    throw error;
+                }
+            })
+        )
+            await session.commitTransaction();
+            session.endSession();
+            return res.status(200).json(order);
+
     } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
         return res.status(500).json(error.message);
     }
 }

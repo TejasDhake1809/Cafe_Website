@@ -11,15 +11,15 @@
 }
 
 .filterlogos button {
-    height : 40%;
+    height : 25%;
     width : auto;
     padding : 10px;
-    font-size : 2rem;
+    font-size : 1rem;
 }
 
 .filterlogos img {
-    height : 50px;
-    width : 50px;
+    height : 30px;
+    width : 30px;
 }
 
 body { 
@@ -33,7 +33,7 @@ body {
     border : none;
     cursor : pointer;
     border-radius : 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     font-family : "Cabin", sans-serif;
 }
 
@@ -85,4 +85,78 @@ body {
     color : orange;
     border : 1px solid orange;
     transition : background-color 0.7s ease, border 0.7s ease;
+}
+
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+  .filterlogos {
+    width: 90vw;
+    height: auto;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  
+  .filterlogos button {
+    font-size: 0.9rem;
+    padding: 8px;
+    flex: 1 1 45%; /* wrap in two columns */
+    justify-content: center;
+  }
+
+  .filterlogos img {
+    height: 25px;
+    width: 25px;
+  }
+
+  .products-container {
+    flex-direction: column;
+    gap: 15px;
+    width: 95vw;
+    padding: 10px;
+  }
+
+  .fixed-order-button {
+    width: 130px;
+    height: 60px;
+    font-size: 1.3rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Mobile: 480px and below */
+@media screen and (max-width: 480px) {
+  .filterlogos {
+    width: 95vw;
+    height: auto;
+    gap: 12px;
+  }
+
+  .filterlogos button {
+    font-size: 0.85rem;
+    padding: 6px;
+    flex: 1 1 100%; /* full width */
+    justify-content: center;
+  }
+
+  .filterlogos img {
+    height: 20px;
+    width: 20px;
+  }
+
+  .products-container {
+    width: 100vw;
+    flex-direction: column;
+    gap: 12px;
+    padding: 5px;
+  }
+
+  .fixed-order-button {
+    width: 110px;
+    height: 55px;
+    font-size: 1.1rem;
+    bottom: 10px;
+    right: 10px;
+  }
 }

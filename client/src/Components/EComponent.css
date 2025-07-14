@@ -1,5 +1,4 @@
 
-
 .ECompWrapper {
     height: 100%;
     width: 100%;
@@ -38,3 +37,44 @@
     padding: 10px;
 
 }
+
+@media screen and (max-width: 768px) {
+  .ECompWrapper {
+    background-position: center;
+  }
+
+  .ECompWrapper-content {
+    font-size: 1.3rem;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .ECompWrapper-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .ECompWrapper-content p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ECompWrapper-content {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .ECompWrapper-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .ECompWrapper-content p {
+    font-size: 0.95rem;
+  }
+}
+    

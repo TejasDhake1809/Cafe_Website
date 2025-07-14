@@ -4,12 +4,19 @@
     grid-template-rows : 1fr 1fr;
     max-height : 100%;
     width : 100%;
-    background-color : rgba(0,0,0,0.05);
+    background-color : rgba(0,0,0,0.05) !important;
+    place-items : center !important;
 }
 
 .products-bestselling {
     max-height : 100%;
     width : 100%;
+    /* border : 1px solid black; */
+    display : flex;
+    font-family : "Cabin", sans-serif;
+    justify-content : space-between;
+    align-items : center;
+    gap : 10px;
 }
 
 .products-filters {
@@ -19,6 +26,7 @@
     align-items : center;
     gap : 30px;
     margin-right : auto;
+    padding : 10px;
 }
 
 .products-filters-buttons{
@@ -54,7 +62,7 @@
     border : none;
     cursor : pointer;
     border-radius : 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .filtersbtn:hover {
@@ -76,10 +84,10 @@
 
 .products-table {
   max-height: 250px;         /* or whatever height you want */
-  width : 85%;
+  width : 80%;
   overflow-y: auto;          /* vertical scroll */
   overflow-x: auto;          /* horizontal scroll for wide tables */
-  border: 1px solid #ccc;    /* optional styling */
+  /* border: 1px solid #ccc;    optional styling */
 }
 
 .products-orders-table th,

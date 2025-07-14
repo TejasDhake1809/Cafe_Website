@@ -1,0 +1,62 @@
+.small-numbers-div {
+    display : grid;
+    grid-template-columns : 1fr 1fr;
+    grid-template-rows : 1fr;
+    /* width : 100%; */
+
+    background-color : white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding : 15px;
+    margin-left : 10px;
+    height : 60%;
+    width : 28%;
+    border-radius : 10px;
+}
+
+.small-numbers-div p {
+    color : gray;
+    font-size : 0.9em;
+}
+
+.progress-ring-wrapper {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.progress-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(
+    orange 0% 75%,     /* orange arc */
+    transparent 75% 100% /* remaining */
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progress-ring::before {
+  content: "";
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.progress-ring span {
+  position: relative;
+  z-index: 2;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #333;
+}
+
+.small-numbers-count {
+    font-size : 1.7em;
+    font-weight : bold;
+}

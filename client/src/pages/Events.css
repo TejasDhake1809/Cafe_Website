@@ -68,3 +68,71 @@
     width : 97vw;
 }
 
+@media screen and (max-width: 768px) {
+  .landing-card-events {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    background-position: center;
+  }
+
+  .landing-card-details-events {
+    width: 100%;
+    height: auto;
+    font-size: 1.4rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .landing-card-details-events p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    padding: 0 10px;
+  }
+
+  .landing-card-details-events button {
+    width: 70%;
+    font-size: 1rem;
+    height: 45px;
+    align-self: center;
+  }
+
+  .tagline-events {
+    font-size: 1.8rem;
+    height: auto;
+    padding: 20px 10px;
+    background-position: center;
+  }
+
+  .tagline-events .title {
+    font-size: 2rem;
+    padding: 10px;
+  }
+
+  .cards-container {
+    height: auto;
+    width: 100vw;
+    padding: 20px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .landing-card-details-events {
+    font-size: 1.1rem;
+  }
+
+  .landing-card-details-events button {
+    width: 90%;
+    font-size: 0.95rem;
+  }
+
+  .tagline-events {
+    font-size: 1.4rem;
+  }
+
+  .tagline-events .title {
+    font-size: 1.6rem;
+  }
+}
