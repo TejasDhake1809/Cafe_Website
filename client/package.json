@@ -8,6 +8,11 @@
     "preview": "vite preview",
     "lint": "eslint ."
   },
+
+  "engines": {
+  "node": "18.x"
+  },
+  
   "author": "Tejas Dhake",
   "license": "MIT",
   "dependencies": {
