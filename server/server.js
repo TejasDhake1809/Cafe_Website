@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json())
 app.use(express.urlencoded({extended : false}));
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: process.env.CLIENT_URL || "http://localhost:3000",
   credentials: true
 }));
 

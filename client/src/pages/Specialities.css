@@ -248,7 +248,7 @@
     font-size: 0.8rem;
     height : 100%;
     padding: 10px;
-    background-color : rgba(0,0,0,0.5);
+    /* background-color : rgba(0,0,0,0.5); */
   }
 
   .landing-card-details-specialities button {
