@@ -8,7 +8,6 @@
     "preview": "vite preview",
     "lint": "eslint ."
   },
-
   "author": "Tejas Dhake",
   "license": "MIT",
   "dependencies": {
@@ -31,7 +30,7 @@
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
     "tailwindcss": "^3.4.1",
-    "vite": "^6.0.5"
+    "vite": "^5.2.10"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.6.0",
