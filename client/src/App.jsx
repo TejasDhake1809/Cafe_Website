@@ -22,16 +22,16 @@ const App = () => {
     <Routes>
       
       <Route path='/dashboard' element={<Dashboard />} />
-      <Route path='order' element={<Order />} />
-      <Route path='order-review' element={<OrderReview />} />
+      <Route path='/order' element={<Order />} />
+      <Route path='/order-review' element={<OrderReview />} />
       <Route path='/' element={<MainLayout />}>
         <Route index element={<Homepage />}/>
-        <Route path='Specialities' element={<Specialities />}/>
-        <Route path='Menu' element={<Menu />}/>
-        <Route path='Events' element={<Events />}/>
-        <Route path='Login' element={<Login />} />
-        <Route path='Register' element={<Register />} />
-        <Route path='add-item' element={<AddItem />} />
+        <Route path='/Specialities' element={<Specialities />}/>
+        <Route path='/Menu' element={<Menu />}/>
+        <Route path='/Events' element={<Events />}/>
+        <Route path='/Login' element={<Login />} />
+        <Route path='/Register' element={<Register />} />
+        <Route path='/add-item' element={<AddItem />} />
       </Route>
     </Routes>
   
