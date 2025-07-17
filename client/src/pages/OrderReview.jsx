@@ -144,9 +144,9 @@ const OrderReview = () => {
                         onChange={handleChange}
                         />
                         Pay by card, netbanking, UPI and more
-                        <span> <img src="/razorpaylogo.png" style={{height : "40px", width : "60px"}}></img>
-                                <img src="/visalogo.png" style={{height : "40px", width : "60px"}}></img>    
-                                <img src="/mastercard.png" style={{height : "40px", width : "60px"}}></img>    
+                        <span> <img alt='razorpay logo' src="/razorpaylogo.png" style={{height : "40px", width : "60px"}}></img>
+                                <img alt='visa logo' src="/visalogo.png" style={{height : "40px", width : "60px"}}></img>    
+                                <img alt='mastercard logo' src="/mastercard.png" style={{height : "40px", width : "60px"}}></img>    
                         </span>
                     </label>
 
@@ -159,14 +159,14 @@ const OrderReview = () => {
                         onChange={handleChange}
                         />
                         Cash on delivery
-                        <span> <img src="https://img.icons8.com/?size=100&id=KV6GFslVNJhZ&format=png&color=000000" style={{height : "60px", width : "60px"}}></img>   
+                        <span> <img alt='Cash icon' src="https://img.icons8.com/?size=100&id=KV6GFslVNJhZ&format=png&color=000000" style={{height : "60px", width : "60px"}}></img>   
                         </span>
                     </label>
                 </div>
 
                 <h3>Fulfillment Details</h3>
                 <div className="fulfillment-details">
-                    <span> <img src="https://img.icons8.com/?size=100&id=6M1qqDqQTtRd&format=png&color=000000" style={{height : "30px", width : "30px"}}></img> </span>
+                    <span> <img alt='Scooter' src="https://img.icons8.com/?size=100&id=6M1qqDqQTtRd&format=png&color=000000" style={{height : "30px", width : "30px"}}></img> </span>
                     <span>Delivery in around 30 min</span>
                 </div>
 

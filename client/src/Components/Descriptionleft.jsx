@@ -15,11 +15,11 @@ const Descriptionleft = (props) => {
               <button onClick={handleClick}
               onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
               className="explore-specialities">
-                <img src={`https://img.icons8.com/?size=100&id=39969&format=png&color=${hover ? "FFFDD0" : "000000"}`}
+                <img alt='' src={`https://img.icons8.com/?size=100&id=39969&format=png&color=${hover ? "FFFDD0" : "000000"}`}
               style={{height : "30px", width : "30px"}}></img> Explore our {props.buttontext}</button>
             </div>
               
-            <div className="grid-items"> <img src={props.img} alt="Cafe Food" /></div>
+            <div className="grid-items"> <img src={props.img} alt={props.alt || "Cafe Food"} /></div>
         </div>
     </>
   )

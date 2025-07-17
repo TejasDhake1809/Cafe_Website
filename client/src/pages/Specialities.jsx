@@ -27,6 +27,7 @@ const Specialities = () => {
         img = {"/Specialities_Bread.jpg"}
         backgroundColor = {"white"}
         color = {"black"}
+        alt = {"Bread"}
         />
 
 
@@ -49,6 +50,7 @@ const Specialities = () => {
         para = {"We don’t just serve great coffee—we create experiences. From live music to tastings, our events bring the community together with something special for everyone."}
         buttontext={"Menu"}
         img = {"/BreadSpecialities.jpg"}
+        alt = {"Bread"}
         />
 
       <div className='specialities-containers-3'>

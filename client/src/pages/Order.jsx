@@ -48,16 +48,16 @@ const Order = () => {
         <div className="filterlogos">
                 
                 <button onClick={() => setActive("Starters")} className={active==="Starters" ? "filtersbtnactive filtersbtn" : "filtersbtn"} >
-                <img src={`https://img.icons8.com/?size=100&id=56700&format=png&color=${active === "Starters" ? "ffffff" : "000000"}`}></img>Starters</button>
+                <img alt='Salad Bowl' src={`https://img.icons8.com/?size=100&id=56700&format=png&color=${active === "Starters" ? "ffffff" : "000000"}`}></img>Starters</button>
             
                 <button onClick={() => setActive("Main Course")} className={active==="Main Course" ? "filtersbtnactive filtersbtn" : "filtersbtn"}>
-                <img src={`https://img.icons8.com/?size=100&id=37380&format=png&color=${active === "Main Course" ? "ffffff" : "000000"}`}></img>Main Course</button>
+                <img alt='Main Course' src={`https://img.icons8.com/?size=100&id=37380&format=png&color=${active === "Main Course" ? "ffffff" : "000000"}`}></img>Main Course</button>
 
                 <button onClick={() => setActive("Dessert")} className={active==="Dessert" ? "filtersbtnactive filtersbtn" : "filtersbtn"}>
-                <img src={`https://img.icons8.com/?size=100&id=ErxOo3KxxsOG&format=png&color=${active === "Dessert" ? "ffffff" : "000000"}`}></img>Dessert</button>
+                <img alt='Cheesecake' src={`https://img.icons8.com/?size=100&id=ErxOo3KxxsOG&format=png&color=${active === "Dessert" ? "ffffff" : "000000"}`}></img>Dessert</button>
 
                 <button onClick={() => setActive("Drinks")} className={active==="Drinks" ? "filtersbtnactive filtersbtn" : "filtersbtn"}>
-                <img src={`https://img.icons8.com/?size=100&id=37211&format=png&color=${active === "Drinks" ? "ffffff" : "000000"}`}></img>Drinks</button>
+                <img alt='Coffee' src={`https://img.icons8.com/?size=100&id=37211&format=png&color=${active === "Drinks" ? "ffffff" : "000000"}`}></img>Drinks</button>
         </div>
 
         <div className="products-container">

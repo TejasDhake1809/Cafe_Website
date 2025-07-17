@@ -10,7 +10,6 @@ const Card = (props) => {
 
       <div className='card-details'>
         <p>{props.title}</p>
-        {/* <button  onClick={handleClick} className="card-button">Order</button> */}
       </div>
         
     </div>

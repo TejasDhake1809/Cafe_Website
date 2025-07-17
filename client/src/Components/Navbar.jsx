@@ -17,12 +17,16 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${menuOpen ? 'responsive' : ''}`}>
-      <h1>Cafe Velvet Roast</h1>
-      <button className="menu-toggle" onClick={toggleMenu}>☰</button>
-        <p><Link to="/">Home</Link></p>
-        <p><Link to="/Menu">Menu</Link></p>
-        <p><Link to="/Specialities">Specialities</Link></p>
-        <p><Link to="/Events">Events</Link></p>
+      {/* <img style={{height : "30px", width : "30px"}} alt='Cafe Velvet Roast Logo' src='/Cafe_logo.png'></img> */}
+      <span className='idkyaar'> 
+          Cafe Velvet Roast <button className="menu-toggle" onClick={toggleMenu}>☰</button></span>
+      
+        <div className="main-links">
+          <p><Link to="/">Home</Link></p>
+          <p><Link to="/Menu">Menu</Link></p>
+          <p><Link to="/Specialities">Specialities</Link></p>
+          <p><Link to="/Events">Events</Link></p>
+        </div>
 
         {user && (
           <p>

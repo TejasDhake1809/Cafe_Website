@@ -17,7 +17,7 @@ const Menu = () => {
         <div className="coffeecup-grid">
             <div className="aligned-text">
                 <div className="aligned-text-div reverse-flow">
-                    <img src="https://img.icons8.com/?size=100&id=37211&format=png&color=000000"></img>
+                    <img alt='Coffee Cup' src="https://img.icons8.com/?size=100&id=37211&format=png&color=000000"></img>
                     <div className="text-div">
                         <h3>Signature Coffees</h3>
                         <p>Discover our rich, aromatic blends crafted from premium beans roasted to perfection 
@@ -26,7 +26,7 @@ const Menu = () => {
                 </div>
 
                 <div className="aligned-text-div reverse-flow">
-                    <img src="https://img.icons8.com/?size=100&id=bJYhcAUy1jDN&format=png&color=000000"></img>
+                    <img alt='Croissant Bread' src="https://img.icons8.com/?size=100&id=bJYhcAUy1jDN&format=png&color=000000"></img>
                     <div className="text-div">
                         <h3>Artisan Breads</h3>
                         <p>Freshly baked daily using traditional recipes, our breads are the perfect 
@@ -36,7 +36,7 @@ const Menu = () => {
                 </div>
 
                 <div className="aligned-text-div reverse-flow">
-                    <img src="https://img.icons8.com/?size=100&id=277&format=png&color=000000"></img>
+                    <img alt='Cheese' src="https://img.icons8.com/?size=100&id=277&format=png&color=000000"></img>
                     <div className="text-div">
                         <h3>Gourmet Cheeses</h3>
                         <p>Savor our curated selection of fine cheeses, perfect for pairing with breads, salads, or enjoying solo.</p>
@@ -47,26 +47,30 @@ const Menu = () => {
             </div>
 
             <div className="coffeecup-image">
-                <img src="/Coffee_Cup.png" style={{height : "100%", width : "100%"}}></img>
+                <img alt='Coffee Cup with Cafe Velvet Roast Logo' src="/Coffee_Cup.png" style={{height : "100%", width : "100%"}}></img>
             </div>
 
             <div className="aligned-text">
                 <div className="aligned-text-div">
-                    <img src="https://img.icons8.com/?size=100&id=98816&format=png&color=000000"></img>
+                    <img alt='Cheesecake' src="https://img.icons8.com/?size=100&id=98816&format=png&color=000000"></img>
                     <div className="text-div">
                         <h3>Fresh Pastries</h3>
                         <p>LIndulge in flaky, buttery pastries made fresh every morning to delight your sweet tooth or accompany your coffee.</p>
                     </div>
                    
-                </div><div className="aligned-text-div">
-                    <img src="https://img.icons8.com/?size=100&id=56700&format=png&color=000000"></img>
+                </div>
+                
+                <div className="aligned-text-div">
+                    <img alt='Salad Bowl' src="https://img.icons8.com/?size=100&id=56700&format=png&color=000000"></img>
                     <div className="text-div">
                         <h3>Healthy Salads</h3>
                         <p>A vibrant mix of garden-fresh ingredients tossed into refreshing salads that fuel your day with flavor and nutrition.</p>
                     </div>
                    
-                </div><div className="aligned-text-div">
-                    <img src="https://img.icons8.com/?size=100&id=rAKmsFuZJT1e&format=png&color=000000"></img>
+                </div>
+                
+                <div className="aligned-text-div">
+                    <img alt='Mocktails and Cocktails' src="https://img.icons8.com/?size=100&id=rAKmsFuZJT1e&format=png&color=000000"></img>
                     <div className="text-div">
                         <h3>Refreshing Beverages</h3>
                         <p>Quench your thirst with our range of handcrafted drinks—from cool iced teas to zesty lemonades and more.</p>
@@ -87,7 +91,7 @@ const Menu = () => {
             </div>
 
             <div className="menu-info-image">
-                <img src="/MenuCafeFood.jpg" style={{height : "100%", width : "100%", borderTopLeftRadius : "250px", borderBottomLeftRadius : "250px"}}></img>
+                <img alt='Table full of food' src="/MenuCafeFood.jpg" style={{height : "100%", width : "98%", borderTopLeftRadius : "250px", borderBottomLeftRadius : "250px"}}></img>
             </div>
         </div>
 

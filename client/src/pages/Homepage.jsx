@@ -21,7 +21,7 @@ const Homepage = () => {
                 <button onClick={handleClick} 
                 onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
                 className="order-now">Order Now 
-                <img src={`https://img.icons8.com/?size=100&id=39969&format=png&color=${hover? "000000" : "ffffff"}`} style={{height : "30px", width : "30px"}}></img> </button>
+                <img alt="" src={`https://img.icons8.com/?size=100&id=39969&format=png&color=${hover? "000000" : "ffffff"}`} style={{height : "30px", width : "30px"}}></img> </button>
             </div>
 
         </div>
@@ -30,6 +30,7 @@ const Homepage = () => {
         para={"Start your day with the rich aroma of handpicked beans,artisan breads, and velvety cheeses. Each cup and every bite tells a story of passion and craft."}
         buttontext={"Specialities"}
         img = {"/Cafe_Food_Random.png"}
+        alt = {"Crispy Bread"}
         />
         
         <div className="view-our-menu">
@@ -48,6 +49,7 @@ const Homepage = () => {
         para = {"We don’t just serve great coffee—we create experiences. From live music to tastings, our events bring the community together with something special for everyone."}
         buttontext={"Events"}
         img = {"/Cafe_Events_Photo.jpg"}
+        alt = {"Events at a Cafe"}
         />
 
         <div className='visiting-hours'>
@@ -60,7 +62,7 @@ const Homepage = () => {
                 <p>Whether it's a cozy weekday coffee or a weekend treat — we’re here to serve!</p>
             </div>
 
-            <img src="/We're_open.jpg"></img>
+            <img alt='We Are Open Banner' src="/We're_open.jpg"></img>
 
         </div>
     

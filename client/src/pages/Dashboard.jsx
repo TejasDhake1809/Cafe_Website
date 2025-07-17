@@ -12,7 +12,7 @@ const Dashboard = () => {
         <DashboardMenu active={active} setActive={setActive}/>
         <div className="data-menu">
             <div className="dashboard-header"> 
-                <img src="https://img.icons8.com/?size=100&id=OTxpMqWbm71F&format=png&color=000000" style={{height : '30px', width : '30px'}}></img> 
+                <img alt='' src="https://img.icons8.com/?size=100&id=OTxpMqWbm71F&format=png&color=000000" style={{height : '30px', width : '30px'}}></img> 
                 <span className="space"> </span>
                 <p>Dashboard</p></div>
             <div className="dashboard-content">

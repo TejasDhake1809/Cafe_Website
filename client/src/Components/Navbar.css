@@ -122,6 +122,20 @@ a {
     margin-left : auto;
 }
 
+.idkyaar {
+  display : flex;
+  align-items : center;
+  justify-content : space-between;
+  font-size : 1.5rem;
+}
+
+.main-links {
+  display : flex;
+  align-items : center;
+  justify-content : space-between;
+  width : 25%;
+}
+
 /* Mobile layout */
 @media screen and (max-width: 768px) {
   .navbar {
@@ -131,9 +145,17 @@ a {
     padding: 10px 20px;
   }
 
+  .idkyaar {
+    width : 100%;
+  }
+
   .menu-toggle {
     display: block;
     align-self: flex-end;
+  }
+
+  .main-links {
+    flex-flow : column;
   }
 
   /* Hide nav links initially */
