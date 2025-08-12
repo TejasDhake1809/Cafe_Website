@@ -32,6 +32,9 @@ a {
     color : black;
 } */
 
+.loginreg {
+  display : flex;
+}
 
 .navbar {
     display: flex;
