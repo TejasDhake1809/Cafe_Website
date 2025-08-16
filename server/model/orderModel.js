@@ -6,8 +6,15 @@ const orderSchema = new Schema ({
     email: {type : String},
     address : {type : String},
     price : {type : Number},
-    items : {type : Schema.Types.Mixed},
-    delivery_status : {type : String, default : "pending"},
+    items: [
+        {
+            productId: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+            name: { type: String, required: true }, // snapshot of product name
+            price: { type: Number, required: true }, // snapshot of product price
+            count: { type: Number, required: true }  // how many ordered
+        }
+    ],
+    delivery_status : {type : String, default : "pending", enum: ["pending", "delivered", "cancelled"]},
     payment_type : {type : String, enum: ['cash', 'online']},
     cash_order_id : {type : Number},
     razorpay_order_id : {type : String},

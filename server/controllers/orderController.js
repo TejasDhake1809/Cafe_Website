@@ -99,10 +99,11 @@ const getDataAnalytics = async (req,res) => {
             startDate = new Date();
             startDate.setHours(0,0,0,0); //Midnight today
         } else if (timeframe === "Weekly") {
-            const day = now.getDay(); //get current day
-            const diff = now.getDate() - day + (day === 0 ? -6 : 1); //subtract to go to previous monday, if sunday we go to last monday with -6
-            const startDate = new Date(now.setDate(diff));
-            startDate.setHours(0,0,0,0); //midnight today
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ...
+            const diff = now.getDate() - day + (day === 0 ? -6 : 1); // go back to Monday
+            startDate = new Date(now); // copy current date
+            startDate.setDate(diff);   // set to Monday
+            startDate.setHours(0,0,0,0);
         } else if (timeframe === "Monthly") {
             startDate = new Date (now.getFullYear(), now.getMonth(), 1); //get year (2025), then get month (0-12), get first day of month
             startDate.setHours(0,0,0,0); //midnight to first day of the month
@@ -180,10 +181,11 @@ const getOrderStats = async (req,res) => {
             startDate = new Date();
             startDate.setHours(0,0,0,0); //Midnight today
         } else if (timeframe === "Weekly") {
-            const day = now.getDay(); //get current day
-            const diff = now.getDate() - day + (day === 0 ? -6 : 1); //subtract to go to previous monday, if sunday we go to last monday with -6
-            const startDate = new Date(now.setDate(diff));
-            startDate.setHours(0,0,0,0); //midnight today
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ...
+            const diff = now.getDate() - day + (day === 0 ? -6 : 1); // go back to Monday
+            startDate = new Date(now); // copy current date
+            startDate.setDate(diff);   // set to Monday
+            startDate.setHours(0,0,0,0);
         } else if (timeframe === "Monthly") {
             startDate = new Date (now.getFullYear(), now.getMonth(), 1); //get year (2025), then get month (0-12), get first day of month
             startDate.setHours(0,0,0,0); //midnight to first day of the month

@@ -78,9 +78,9 @@ const addOrder = async (req,res) => {
         }
 
         const updateCount = await Promise.all (
-            Object.entries(items.counts).map(async([productId,incrementBy]) => {
+            items.map(async (item) => {
                 try {
-                    const result = await Product.updateItemOrderCount(productId,incrementBy,session);
+                    const result = await Product.updateItemOrderCount(item.productId,item.count,session);
                     return result;
                 } catch (error) {
                     console.error(`Failed to update count for product ${productId}:`, error.message);
