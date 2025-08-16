@@ -158,19 +158,23 @@ const Orders = () => {
       <div className="update-order-status flexbox-vertical">
         <div className="filters">
             
-            <button onClick={() => handleClick('allOrders', 'Monthly')}
-                className={`duration-filters-button table-filters-button ${tableSorter === 'Monthly' ? 'active' : ''}`}>
-                Monthly
+            <button onClick={() => handleClick('allOrders', 'Today')}
+                className={`duration-filters-button table-filters-button ${tableSorter === 'Today' ? 'active' : ''}`}>
+                Today
               </button>
+
             <button onClick={() => handleClick('allOrders', 'Weekly')}
                 className={`duration-filters-button table-filters-button ${tableSorter === 'Weekly' ? 'active' : ''}`}>
                 Weekly
             </button>
 
-            <button onClick={() => handleClick('allOrders', 'Today')}
-                className={`duration-filters-button table-filters-button ${tableSorter === 'Today' ? 'active' : ''}`}>
-                Today
+            <button onClick={() => handleClick('allOrders', 'Monthly')}
+                className={`duration-filters-button table-filters-button ${tableSorter === 'Monthly' ? 'active' : ''}`}>
+                Monthly
               </button>
+            
+
+            
             
         </div>
 

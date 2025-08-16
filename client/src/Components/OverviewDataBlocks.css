@@ -1,62 +1,178 @@
-.small-numbers-div {
-    display : grid;
-    grid-template-columns : 1fr 1fr;
-    grid-template-rows : 1fr;
-    /* width : 100%; */
+/* -------------------------
+   OverviewDataBlocks.css
+---------------------------*/
 
-    background-color : white;
+/* Base styles (desktop) */
+.small-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center the blocks horizontally */
+    align-items: center;
+    gap: 20px; /* space between blocks */
+    font-family: "Cabin", sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.small-numbers-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding : 15px;
-    margin-left : 10px;
-    height : 60%;
-    width : 28%;
-    border-radius : 10px;
+    padding: 15px;
+    margin: 0; /* removed margin-left to center blocks */
+    height: 60%;
+    width: 28%;
+    max-width: 300px; /* optional: limit maximum width on desktop */
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.small-numbers-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .small-numbers-div p {
-    color : gray;
-    font-size : 0.9em;
-}
-
-.progress-ring-wrapper {
-    display : flex;
-    justify-content : center;
-    align-items : center;
-}
-
-.progress-ring {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: conic-gradient(
-    orange 0% 75%,     /* orange arc */
-    transparent 75% 100% /* remaining */
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.progress-ring::before {
-  content: "";
-  position: absolute;
-  width: 65px;
-  height: 65px;
-  background: white;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.progress-ring span {
-  position: relative;
-  z-index: 2;
-  font-size: 1.25em;
-  font-weight: bold;
-  color: #333;
+    color: gray;
+    font-size: 0.9em;
 }
 
 .small-numbers-count {
-    font-size : 1.7em;
-    font-weight : bold;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.progress-ring-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: conic-gradient(
+        orange 0% 75%,     
+        transparent 75% 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-ring::before {
+    content: "";
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.progress-ring span {
+    position: relative;
+    z-index: 2;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* -------------------------
+   Responsive adjustments
+---------------------------*/
+
+/* Tablets / medium screens (≤1024px) */
+@media screen and (max-width: 1024px) {
+    .small-numbers-div {
+        width: 45%;
+        max-width: 400px;
+        height: auto;
+        padding: 12px;
+    }
+
+    .progress-ring {
+        width: 70px;
+        height: 70px;
+    }
+
+    .progress-ring::before {
+        width: 55px;
+        height: 55px;
+    }
+
+    .progress-ring span {
+        font-size: 1.1em;
+    }
+
+    .small-numbers-count {
+        font-size: 1.5em;
+    }
+}
+
+/* Mobile / small screens (≤768px) */
+@media screen and (max-width: 768px) {
+    .small-numbers {
+        gap: 15px;
+    }
+
+    .small-numbers-div {
+        width: 100%;       /* take max width of parent */
+        max-width: 500px;  /* optional: prevent over-stretching */
+        height: auto;
+        grid-template-columns: 1fr; /* stack text and ring vertically */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .progress-ring {
+        width: 60px;
+        height: 60px;
+    }
+
+    .progress-ring::before {
+        width: 50px;
+        height: 50px;
+    }
+
+    .progress-ring span {
+        font-size: 1em;
+    }
+
+    .small-numbers-count {
+        font-size: 1.3em;
+    }
+}
+
+/* Extra small screens (≤480px) */
+@media screen and (max-width: 480px) {
+    .small-numbers-div {
+        width: 100%;
+        max-width: none; /* remove limit, take full parent width */
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .progress-ring {
+        width: 50px;
+        height: 50px;
+    }
+
+    .progress-ring::before {
+        width: 40px;
+        height: 40px;
+    }
+
+    .progress-ring span {
+        font-size: 0.9em;
+    }
+
+    .small-numbers-count {
+        font-size: 1.1em;
+    }
 }

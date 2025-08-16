@@ -106,7 +106,7 @@ const Products = () => {
                     </table>
         </div>
         <div className="products-bestselling">
-          <h2>Best Selling Products</h2>
+          <h2 className='products-bestselling-h2'>Best Selling Products</h2>
           {bestselling.map((item) => {
             return (
               <Bestselling 

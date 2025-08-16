@@ -1,0 +1,223 @@
+/* UserDashboard.css */
+
+/* --- Scoped Variables for Dashboard --- */
+.dashboard-container {
+  --primary-bg: #f4f1eb;
+  --secondary-bg: #ffffff;
+  --text-primary: #3d2c21;
+  --text-secondary: #6e5e54;
+  --accent-color: #8a6f5e;
+  --border-color: #e0d8cd;
+  --shadow-color: rgba(61, 44, 33, 0.1);
+
+  --status-preparing-bg: #fef3c7;
+  --status-preparing-text: #92400e;
+  --status-ready-bg: #d1fae5;
+  --status-ready-text: #065f46;
+  --status-completed-bg: #e5e7eb;
+  --status-completed-text: #4b5563;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Import Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Header --- */
+.user-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--accent-color);
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.logo img {
+    height : 50px;
+    width : 50px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* --- Main Content --- */
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.order-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.no-orders-message {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* --- Orders Grid & Card --- */
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.order-card {
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-body li {
+  display: flex;
+  align-items: center;
+}
+
+.item-quantity {
+  font-weight: 600;
+  margin-right: 0.5rem;
+  color: var(--accent-color);
+}
+
+.item-name {
+  color: var(--text-secondary);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background-color: #f9f7f4;
+  font-size: 0.9rem;
+}
+
+.order-date {
+  color: var(--text-secondary);
+}
+
+.order-total {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* --- Status Badges --- */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.status-preparing {
+  background-color: var(--status-preparing-bg);
+  color: var(--status-preparing-text);
+}
+
+.status-badge.status-ready {
+  background-color: var(--status-ready-bg);
+  color: var(--status-ready-text);
+}
+
+.status-badge.status-completed {
+  background-color: var(--status-completed-bg);
+  color: var(--status-completed-text);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 640px) {
+  .user-dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .order-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo h1 {
+    font-size: 1.25rem;
+  }
+
+  .order-section h2 {
+    font-size: 1.5rem;
+  }
+}

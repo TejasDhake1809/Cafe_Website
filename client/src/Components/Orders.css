@@ -1,163 +1,256 @@
 .orders-container {
-    height : 100%;
-    width : 100%;
-    display : grid;
-    grid-template-columns : 1fr;
-    grid-template-rows : 1fr 3fr;
-    background-color : rgba(0,0,0,0.05);
-    grid-gap : 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.05);
 }
 
-.orders-stats-div {
-    height : 100%;
-    width : 15vw;
-    /* border : 1px solid black; */
-    gap : 10px;   
-    background-color : white;
-    box-shadow : 0 2px 4px rgba(0,0,0,0.1);
-    border-radius : 20px;
-}
-
-.flexbox-horizontal {
-    display : flex;
-    justify-content : center;
-    align-items : center;
-}
-
-.number-font {
-   font-size : 1.7rem !important;
-   color : black !important;
-}
-
-.duration-filters-button {
-    border : none;
-    background-color : white;
-    color : black;
-    cursor : pointer;
-    font-family : "Cabin", sans-serif;
-    font-size : 0.7rem;
-    padding : 5px;
-    box-shadow : 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.duration-filters-button:hover {
-    background-color : black;
-    color : white;
-    transition : background-color 0.5s ease, color 0.5s ease;
-}
-
-.active {
-    background-color : black !important;
-    color : white !important;
-    transition : background-color 0.5s ease, color 0.5s ease !important;
-}
-
-.table-filters-button {
-    border-radius : 20px;
-    padding-left : 10px;
-    padding-right : 10px;
-    font-size : 0.9rem !important;
-}
-
-.stats{
-    display : flex;
-    flex-direction : column;
-    font-family : "Cabin", sans-serif;
-    /* align-items : center; */
-    justify-content : center;
-    gap : 10px;
-}
-
-.stats span {
-    font-size : 1rem;
-    color : gray;
-}
-
-.image-size img {
-    height : 30px;
-    width : 30px;
-}
-
+/* Stats Cards Wrapper */
 .orders-stats {
-    display : flex;
-    justify-content : space-evenly;
-    align-items : center;
-    /* border : 1px solid black; */
-    gap : 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch; /* equal height cards */
 }
 
-
-.update-order-status-table {
-  width: 100%;
-  max-height : 55vh;
-  border-collapse: collapse;
-  font-family: "Cabin", sans-serif;
+/* Individual Stats Card */
+.orders-stats-div {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    flex: 1 1 220px; /* grow/shrink & base width */
+    max-width: 250px;
+    min-width: 180px;
+    box-sizing: border-box;
+    gap: 10px;
 }
 
-.table-wrapper {
-    overflow-x : auto;
-    overflow-y : auto;
-    max-height : 55vh;
-    width : 100%;
-}
-
-.update-order-status {
-  height : 100%;
-  width : 100%;      
-  gap : 20px;
-  /* border: 1px solid #ccc;    optional styling */
-}
-
-.update-order-status-image {
-    height : 10px;
-    width : 10px;
-}
-
-.update-order-status button {
-    background-color : white;
-    border : none;
-    font-family : "Cabin", sans-serif;
-    gap : 5px;
-    cursor : pointer;
-    font-size : 1rem;
-    font-weight : 600;
+/* Card content layout */
+.flexbox-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
 .flexbox-vertical {
-    display : flex;
-    flex-flow : column;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
-.filters {
-    display : flex;
-    flex-direction : row-reverse;
-    gap : 10px;
-    padding : 10px;
+/* Card Images */
+.image-size img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Stats Text */
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.number-font {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black !important;
+}
+
+.stats span {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+/* Duration Buttons */
+.duration-filters-button {
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-family: "Cabin", sans-serif;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    margin-right: 5px;
+}
+
+.duration-filters-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.active {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Chart Containers */
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.barchart, .piechart {
+    background-color: white;
+    flex: 1 1 300px;
+    min-width: 280px;
+    max-width: 500px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Table */
+.update-order-status-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Cabin", sans-serif;
+    table-layout: fixed; /* prevent overflow */
 }
 
 .update-order-status-table th,
 .update-order-status-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-  background-color : white;
-  font-size : 0.8rem;
-}
-
-.update-order-status-table tbody {
-    background-color : white;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.8rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
 }
 
 .update-order-status-table th {
-  background-color: #f9f9f9;
-  font-weight: 600;
-  font-size : 1rem;
-  color: #333;
+    background-color: #f9f9f9;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
 }
 
 .update-order-status-table thead th {
-  position: sticky;
-  top: 0;
-  background-color: #fff; /* match your background */
-  z-index: 1;
+    position: sticky;
+    top: 0;
+    /* background-color: #fff; */
+    z-index: 1;
+}
+
+.update-order-status-table button{
+    background-color : white;
+    border : none;
+    cursor : pointer;
+    font-weight : bold;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 55vh;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+/* Table Images */
+.update-order-status-image {
+    width: 10px;          /* scalable size */
+    height: 10px;         /* maintain square */
+    object-fit: contain;   /* preserve aspect ratio */
+    display: block;
+}
+
+/* -------------------------
+   Responsive Adjustments
+---------------------------*/
+
+/* Medium screens ≤1024px */
+@media screen and (max-width: 1024px) {
+    .orders-stats-div {
+        flex: 1 1 200px;
+        max-width: 220px;
+        padding: 12px;
+    }
+
+    .image-size img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Small screens ≤768px */
+@media screen and (max-width: 768px) {
+    .orders-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .orders-stats-div {
+        width: 90%;
+        max-width: 95%;
+        min-width: auto;
+    }
+
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Extra small screens ≤425px */
+@media screen and (max-width: 425px) {
+    .orders-stats-div {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .image-size img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .number-font {
+        font-size: 1.2rem;
+        color : black;
+    }
+
+    .duration-filters-button {
+        font-size: 0.6rem;
+        padding: 4px 6px;
+    }
+
+    .barchart, .piechart {
+        width: 100%;
+        min-width: auto;
+        max-width: 100%;
+        padding: 10px;
+    }
 }

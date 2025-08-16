@@ -1,41 +1,43 @@
-import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import MenuCard from './MenuCard';
 
-const MenuCardWrapper = (props) => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL;
-    const [products, setProducts] = useState([]);
+const MenuCardWrapper = ({ category, items, updateCount }) => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const [products, setProducts] = useState([]);
 
-    useEffect(() =>{
-        const fetchItems = async () => {
-            try {
-                const items = await axios.get(`${baseUrl}/api/items`, {
-                    params: props.category !== "" ? { category: props.category } : {}
-                });
-                setProducts(items.data);
-            } catch (error) {
-                console.error('Failed to get items', error);
-            }
-        }
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const itemsRes = await axios.get(`${baseUrl}/api/items`, {
+          params: category !== "" ? { category } : {}
+        });
+        setProducts(itemsRes.data);
+      } catch (error) {
+        console.error('Failed to get items', error);
+      }
+    }
+    fetchItems();
+  }, [category]);
 
-        fetchItems();
-    }, [])
   return (
     <>
-        {products.map((item) => (
-            <MenuCard 
-                key = {item._id}
-                name = {item.name}
-                category = {item.category}
-                description = {item.description}
-                image = {item.image}
-                price = {item.price}
-                count={props.counts[item._id] || 0}
-                updateCount={props.updateCount}
-                _id = {item._id}
-            />
-        ))}
+      {products.map(product => {
+        const existing = items.find(cartItem => cartItem.productId === product._id);
+        return (
+          <MenuCard
+            key={product._id}
+            _id={product._id}
+            name={product.name}
+            image={product.image}
+            price={product.price}
+            count={existing ? existing.count : 0}
+            updateCount={(id, name, newCount) =>
+              updateCount(product, newCount)
+            }
+          />
+        );
+      })}
     </>
   )
 }

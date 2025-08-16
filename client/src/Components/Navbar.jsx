@@ -40,7 +40,10 @@ const Navbar = () => {
                 />
               </span>
               <div className="dropdown-content">
-                <p><Link to="/dashboard">Dashboard</Link></p>
+                <div>
+                  <p><Link to="/user-dashboard">User Dashboard</Link></p>
+                  <p><Link to="/dashboard">Admin Dashboard</Link></p>
+                </div>
               </div>
             </div>
             <button className="logoutbutton" onClick={handleClick}>Logout</button>

@@ -1,138 +1,306 @@
-.tagline-events {
-    font-size : 2.5rem;
-    text-align : center;
-    /* background-image : url('Bread.jpg');
-    background-attachment : fixed; */
-    height : 40vh;
-    color : white;
-    display : flex;
-    background-repeat : no-repeat;
-    background-size : cover;
-    justify-content : center;
-    align-items : center;
-    font-family : "Cabin", sans-serif;
-    font-weight : 400;
+/* Events.css */
+
+/* Base styles for the entire page container */
+.events-page-container {
+    min-height: 100vh;
+    background-color: #FFFBEB; /* bg-amber-50 */
+    font-family: sans-serif; /* font-sans */
+    color: #374151; /* text-gray-800 */
+    margin-top : 100px;
 }
 
-.landing-card-events{
-    height : 90vh;
-    width : 100vw;
-    background-image : url("/Events_Background.jpg");
-    background-repeat : no-repeat;
-    background-size : cover;
-    background-position : center;
-    position : relative;
-    padding : 10px;
-    display : flex;
-    font-family : "Cabin", sans-serif;
-    margin : -8px;
-}
-
-.landing-card-details-events {
-    height : 50vh;
-    width : 40%;
-    /* border : 1px solid white;    */
-    font-size : 2em;
-    display : flex;
-    flex-flow : column;
-    padding : 10px;
-    align-self : flex-end;
-    justify-content : space-around;
-}
-
-.landing-card-details-events p{
-    color : white;
-}
-.landing-card-details-events button{
-    align-self : left;
-    height : 6vh;
-    width : 40%;
-    font-size : 1.2rem;
-    border-radius : 100px;
-    background-color : #F4A261;  
-    color : #1E1E1E;
-    border : none;
-    font-family : "Roboto", sans-serif;
-    cursor : pointer;
-}
-
-.landing-card-details-events button:hover {
-    background-color : #1E1E1E;
-    color : #F4A261;
-    border : 1px solid #F4A261;
-    transition : background-color 0.5s ease, color 0.5s ease;
-}
-
-.cards-container {
-    height : 100vh;
-    width : 97vw;
-}
-
-@media screen and (max-width: 768px) {
-  .landing-card-events {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-    text-align: center;
+/* --- Hero Section --- */
+.events-hero-section {
+    position: relative;
+    height: 65vh; /* h-[65vh] */
+    background-size: cover;
     background-position: center;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem; /* p-4 */
+}
 
-  .landing-card-details-events {
+.events-hero-overlay {
+    position: absolute;
+    inset: 0; /* top:0, right:0, bottom:0, left:0 */
+    background-color: rgba(0, 0, 0, 0.5); /* opacity-50 */
+}
+
+.events-hero-content {
+    position: relative;
+    z-index: 10; /* z-10 */
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+    color: white; /* text-white */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* space-y-6 */
+}
+
+.events-hero-title {
+    font-size: 3rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    line-height: 1.25; /* leading-tight */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* drop-shadow-lg */
+}
+
+.events-hero-paragraph {
+    font-size: 1.125rem; /* text-lg */
+    opacity: 0.95; /* opacity-95 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* drop-shadow-md */
+}
+
+.events-hero-button-container {
+    padding-top: 1.5rem; /* pt-6 */
+}
+
+.events-button {
+    background-color: #F59E0B; /* bg-amber-600 */
+    color: white; /* text-white */
+    font-weight: 700; /* font-bold */
+    padding: 0.75rem 2rem; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: all 0.3s ease-in-out; /* transition duration-300 ease-in-out */
+    transform: scale(1); /* transform */
+    border: none;
+    cursor: pointer;
+}
+
+.events-button:hover {
+    background-color: #D97706; /* hover:bg-amber-700 */
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+.events-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.5), 0 0 0 6px rgba(245, 158, 11, 0.25); /* focus:ring-2 focus:ring-amber-500 focus:ring-opacity-75 */
+}
+
+
+/* --- Tagline Section --- */
+.events-tagline-section {
+    padding-top: 4rem; /* py-16 */
+    padding-bottom: 4rem; /* py-16 */
+    background-color: white; /* bg-white */
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+}
+
+.events-tagline-content {
+    max-width: 42rem; /* max-w-6xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.events-tagline-text {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    color: #111827; /* text-gray-900 */
+}
+
+
+/* --- Cards Container Section --- */
+.events-cards-section {
+    padding-top: 4rem; /* py-16 */
+    padding-bottom: 4rem; /* py-16 */
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    background-color: #FFFBEB; /* bg-amber-50 */
+}
+
+.events-cards-grid {
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr; /* grid-cols-1 */
+    gap: 2.5rem; /* gap-10 */
+}
+
+/* Responsive grid for cards */
+@media (min-width: 640px) { /* sm breakpoint */
+    .events-cards-grid {
+        grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .events-cards-grid {
+        grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+    }
+}
+
+
+/* --- Call to Action Section --- */
+.events-cta-section {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+    background-color: #292524; /* bg-stone-800 */
+    color: white; /* text-white */
+    text-align: center;
+}
+
+.events-cta-content {
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* space-y-8 */
+}
+
+.events-cta-title {
+    font-size: 2.25rem; /* text-3xl */
+    font-weight: 800; /* font-extrabold */
+    line-height: 1.25; /* leading-tight */
+}
+
+.events-cta-paragraph {
+    font-size: 1.125rem; /* text-lg */
+    opacity: 0.9; /* opacity-90 */
+}
+
+.events-button-cta {
+    background-color: #F59E0B; /* bg-amber-600 */
+    color: white; /* text-white */
+    font-weight: 700; /* font-bold */
+    padding: 0.75rem 2rem; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+    border: none;
+    cursor: pointer;
+}
+
+.events-button-cta:hover {
+    background-color: #D97706; /* hover:bg-amber-700 */
+    transform: scale(1.05);
+}
+
+.events-button-cta:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 0 6px rgba(255, 255, 255, 0.25); /* focus:ring-2 focus:ring-white focus:ring-opacity-75 */
+}
+
+
+/* --- EventCard Specific Styles (from original EComponent.css with refinements) --- */
+.event-card-wrapper {
+    height: 300px;
     width: 100%;
-    height: auto;
-    font-size: 1.4rem;
+    max-width: 400px; /* Added max-width for better control in grids */
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-  }
-
-  .landing-card-details-events p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    padding: 0 10px;
-  }
-
-  .landing-card-details-events button {
-    width: 70%;
-    font-size: 1rem;
-    height: 45px;
-    align-self: center;
-  }
-
-  .tagline-events {
-    font-size: 1.8rem;
-    height: auto;
-    padding: 20px 10px;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
-  }
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    cursor: pointer;
+}
 
-  .tagline-events .title {
-    font-size: 2rem;
+.event-card-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.event-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
-  }
+}
 
-  .cards-container {
-    height: auto;
-    width: 100vw;
-    padding: 20px 10px;
-  }
+.event-card-content {
+    text-align: center;
+    font-size: 1.7rem;
+    color: white;
+    position: relative;
+    z-index: 2; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Cabin", serif;
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 90%;
+}
+
+.event-card-content .event-card-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.event-card-content .event-card-paragraph {
+    font-size: 1rem;
+    padding: 0 5px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Responsive adjustments for EventCard */
+@media screen and (max-width: 768px) {
+    .event-card-wrapper {
+        background-position: center;
+    }
+    .event-card-content {
+        font-size: 1.3rem;
+        padding: 15px;
+        gap: 0.4rem;
+    }
+    .event-card-content .event-card-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .event-card-content .event-card-paragraph {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .landing-card-details-events {
-    font-size: 1.1rem;
-  }
-
-  .landing-card-details-events button {
-    width: 90%;
-    font-size: 0.95rem;
-  }
-
-  .tagline-events {
-    font-size: 1.4rem;
-  }
-
-  .tagline-events .title {
-    font-size: 1.6rem;
-  }
+    .event-card-content {
+        font-size: 1rem;
+        padding: 10px;
+        gap: 0.3rem;
+    }
+    .event-card-content .event-card-title {
+        font-size: 1.5rem;
+    }
+    .event-card-content .event-card-paragraph {
+        font-size: 0.9rem;
+    }
 }

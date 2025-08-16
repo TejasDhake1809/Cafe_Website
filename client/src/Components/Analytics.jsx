@@ -104,7 +104,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
     <div className="analytics-grid-container">
         <div className="container">
             <div className="orders-stats-div flexbox-horizontal image-size">
-                <img src="https://img.icons8.com/?size=100&id=47602&format=png&color=000000" alt="orders icon" />
+                <img src="https://img.icons8.com/?size=100&id=83204&format=png&color=000000" alt="orders icon" />
                 <div className="stats">
                         <div className="duration-filters">
                         <button onClick={() => handleClick("repeatClass", "Today")}
@@ -129,7 +129,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
             </div>
 
             <div className="orders-stats-div flexbox-horizontal image-size">
-                <img src="https://img.icons8.com/?size=100&id=47602&format=png&color=000000" alt="orders icon" />
+                <img src="https://img.icons8.com/?size=100&id=114064&format=png&color=000000" alt="new customers icon" />
                 <div className="stats">
                         <div className="duration-filters">
                         <button onClick={() => handleClick("newClass", "Today")}
@@ -154,7 +154,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
             </div>
 
             <div className="orders-stats-div flexbox-horizontal image-size">
-                <img src="https://img.icons8.com/?size=100&id=47602&format=png&color=000000" alt="orders icon" />
+                <img src="https://img.icons8.com/?size=100&id=nZy6aHwLEY5n&format=png&color=000000" alt="average orders icon" />
                 <div className="stats">
                         <div className="duration-filters">
                         <button onClick={() => handleClick("aioClass", "Today")}
@@ -204,7 +204,7 @@ import PaymentTypePieChart from './PaymentTypePieChart';
             </div>
 
             <div className="orders-stats-div flexbox-horizontal image-size">
-                <img src="https://img.icons8.com/?size=100&id=47602&format=png&color=000000" alt="orders icon" />
+                <img src="https://img.icons8.com/?size=100&id=7JQFQy4GADKf&format=png&color=000000" alt="payment methods icon" />
                 <div className="stats">
                     <PaymentTypePieChart {...dataStats} />
                     <span>Payment Type</span>

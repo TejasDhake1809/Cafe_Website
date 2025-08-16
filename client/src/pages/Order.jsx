@@ -15,14 +15,41 @@ const Order = () => {
     const whiteColor = "ffffff";
 
     const [active,setActive] = useState("");
-    const [counts, setCounts] = useState({}); // { itemId1: 2, itemId2: 5, ... }
+    const [items, setItems] = useState([]);
 
-    const updateCount = (itemId, newCount) => {
-        setCounts(prev => ({
-        ...prev,
-        [itemId]: newCount
-        }));
-    };
+const updateCount = (product, newCount) => {
+    setItems(prevItems => {
+      const existing = prevItems.find(item => item.productId === product._id);
+
+      if (existing) {
+        if (newCount === 0) {
+          // remove if count goes to 0
+          return prevItems.filter(item => item.productId !== product._id);
+        }
+        // update count
+        return prevItems.map(item =>
+          item.productId === product._id
+            ? { ...item, count: newCount, totalPrice: newCount * item.price }
+            : item
+        );
+      } else {
+        // add if new
+        if (newCount > 0) {
+          return [
+            ...prevItems,
+            {
+              productId: product._id,
+              name: product.name,
+              price: product.price,
+              count: newCount,
+              totalPrice: newCount * product.price
+            }
+          ];
+        }
+        return prevItems;
+      }
+    });
+  };
 
     if (!user) {
         toast.error("Login to proceed");
@@ -30,8 +57,8 @@ const Order = () => {
     }
 
     const handleClick = () => {
-        const orderData = {counts};
-        if (Object.keys(counts).length === 0) {
+        const orderData = {items};
+        if (Object.keys(items).length === 0) {
             toast.error ("You need to select an item to proceed");
             return;
         }
@@ -61,11 +88,11 @@ const Order = () => {
         </div>
 
         <div className="products-container">
-            {active === "" && <MenuCardWrapper category = {""} counts={counts} updateCount={updateCount} />}
-            {active ==="Starters" && <MenuCardWrapper category = {"Starters"} counts={counts} updateCount={updateCount}/>}
-            {active ==="Main Course" && <MenuCardWrapper category = {"Main Course"} counts={counts} updateCount={updateCount}/>}
-            {active ==="Dessert" && <MenuCardWrapper category = {"Dessert"} counts={counts} updateCount={updateCount}/>}
-            {active ==="Drinks" && <MenuCardWrapper category = {"Drinks"} counts={counts} updateCount={updateCount}/>}
+            {active === "" && <MenuCardWrapper category = {""} items={items} updateCount={updateCount} />}
+            {active ==="Starters" && <MenuCardWrapper category = {"Starters"} items={items} updateCount={updateCount}/>}
+            {active ==="Main Course" && <MenuCardWrapper category = {"Main Course"} items={items} updateCount={updateCount}/>}
+            {active ==="Dessert" && <MenuCardWrapper category = {"Dessert"} items={items} updateCount={updateCount}/>}
+            {active ==="Drinks" && <MenuCardWrapper category = {"Drinks"} items={items} updateCount={updateCount}/>}
         </div>
 
         <button 

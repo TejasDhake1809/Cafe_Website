@@ -51,7 +51,7 @@ const OrderReview = () => {
                 email : user.email,
                 address : address,
                 price : totalAmount,
-                items : order,
+                items : order.items,
                 payment_type : 'cash',
                 cash_order_id : nextSeq
             })
@@ -62,16 +62,20 @@ const OrderReview = () => {
 
                     const timer = setTimeout(() => {
                     toast.loading("Redirecting you to home page", {id : toastId});
-                    setTimeout(() => {
-                        toast.dismiss(toastId);
-                        navigate('/');
-                    }, 3000);
+                        setTimeout(() => {
+                            toast.dismiss(toastId);
+                            navigate('/');
+                        }, 3000);
                     }, 1000);
                 }
             }
             
         } catch (error) {
             toast.error(error.message);
+            setTimeout(() => {
+                        toast.dismiss(toastId);
+
+                    }, 3000);
         }
     }
 
@@ -106,11 +110,9 @@ const OrderReview = () => {
     useEffect(() => {
         if (order && products.length > 0) {
             let sum = 20; // base delivery fee
-            Object.entries(order.counts).forEach(([productId, quantity]) => {
-                const product = products.find(p => p._id === productId);
-                if (product) {
-                    sum += quantity * product.price;
-                }
+            order.items.forEach((item) => {
+                    sum += item.count * item.price;
+                
             });
             setTotalAmount(sum);
         }
@@ -208,23 +210,10 @@ const OrderReview = () => {
             <div className="order-review-total">
                 <p style={{marginLeft : "20px", fontSize : "1.3rem", fontFamily : "Cabin", fontWeight : "700"}}>Basket</p>
 
-                {order && Object.entries(order.counts).map(([productId, quantity],index) => {   
-                    const product = products.find(p => p._id === productId);
-                    
-                    if (!product) {
-                        console.log("No product found while comparing to counts");
-                        return null;
-                    } 
-
-                    return (
-                        <OrderChecklist 
-                            key ={index}
-                            quantity = {quantity}
-                            price = {product.price}
-                            name = {product.name} />
-                    )
-                        
-                })}
+                {order &&
+            order.items.map((item, index) => (
+              <OrderChecklist key={index} quantity={item.count} price={item.price} name={item.name} />
+            ))}
 
                 <div className="order-extra">
                      <span>Subtotal </span>

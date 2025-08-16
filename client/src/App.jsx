@@ -13,14 +13,14 @@ import ScrollToTop from './Components/ScrollTop'
 import Order from './pages/Order'
 import OrderReview from './pages/OrderReview'
 import { Toaster } from 'react-hot-toast';
-
+import UserDashboard from './pages/UserDashboard'
 const App = () => {
   return (
   <>
     <ScrollToTop /> 
     <Toaster position="bottom-right" reverseOrder={false} />
     <Routes>
-      
+      <Route path='user-dashboard' element={<UserDashboard />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/order' element={<Order />} />
       <Route path='/order-review' element={<OrderReview />} />

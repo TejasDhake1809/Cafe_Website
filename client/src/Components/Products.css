@@ -11,13 +11,14 @@
 .products-bestselling {
     max-height : 100%;
     width : 100%;
-    /* border : 1px solid black; */
     display : flex;
     font-family : "Cabin", sans-serif;
     justify-content : space-between;
     align-items : center;
     gap : 10px;
+    flex-wrap: wrap; /* always wrap so cards move to next line if needed */
 }
+
 
 .products-filters {
     display : flex;
@@ -65,12 +66,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.filtersbtn:hover {
-    /* background-color : rgba(0,0,0,0.08); */
-}
-
 .filtersbtnactive {
-    background-color: black; /* light grey or any highlight color */
+    background-color: black;
     color : white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition : background-color 0.5s ease;
@@ -83,11 +80,10 @@
 }
 
 .products-table {
-  max-height: 250px;         /* or whatever height you want */
+  max-height: 250px;
   width : 80%;
-  overflow-y: auto;          /* vertical scroll */
-  overflow-x: auto;          /* horizontal scroll for wide tables */
-  /* border: 1px solid #ccc;    optional styling */
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .products-orders-table th,
@@ -106,6 +102,147 @@
 .products-orders-table thead th {
   position: sticky;
   top: 0;
-  background-color: #fff; /* match your background */
+  background-color: #fff;
   z-index: 1;
+}
+
+/* -------------------------
+   Responsive Adjustments
+---------------------------*/
+
+/* Tablets / medium screens ≤1024px */
+@media screen and (max-width: 1024px) {
+    .products-container {
+        width: 95%;
+        margin: 0 auto;
+        gap: 15px;
+    }
+
+    .products-filters-buttons {
+        width: 120px;
+        height: 120px;
+    }
+
+    .products-filters img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .products-bestselling {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .products-table {
+        width: 95%;
+    }
+
+    .products-orders-table {
+        min-width: 500px;
+    }
+}
+
+/* Mobile / small screens ≤768px */
+@media screen and (max-width: 768px) {
+    .products-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .products-filters {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .products-filters-buttons {
+        width: 100px;
+        height: 100px;
+    }
+
+    .products-filters img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .products-filters-addbuttons {
+        gap: 8px;
+    }
+
+    .products-bestselling {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .products-bestselling-h2 {
+        display: block;
+        width: 100%;
+    }
+
+    .products-table {
+        width: 100%;
+    }
+
+    .products-orders-table {
+        min-width: 450px;
+    }
+
+    .products-orders-table th,
+    .products-orders-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small screens ≤425px */
+@media screen and (max-width: 425px) {
+    .products-container {
+        padding: 5px;
+    }
+
+    .products-filters {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .products-filters-buttons {
+        width: 80px;
+        height: 80px;
+    }
+
+    .products-filters img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .products-bestselling {
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .products-bestselling-h2 {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .products-table {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .products-orders-table {
+        min-width: 400px;
+    }
+
+    .products-orders-table th,
+    .products-orders-table td {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
 }

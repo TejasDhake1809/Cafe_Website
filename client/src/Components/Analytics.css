@@ -1,101 +1,168 @@
 .analytics-grid-container {
-    display : grid;
-    grid-template-columns : 1fr;
-    grid-template-rows : 1fr 3fr;
-    height : 100%;
-    width : 100%;
-    /* border : 1px solid black; */
-    gap : 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Container for all cards */
 .container {
-    gap : 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
 }
 
+/* Individual Stats Cards */
 .orders-stats-div {
-    height : 90%;
-    width : 13vw;
-    /* border : 1px solid black; */
-    gap : 10px;   
-    background-color : white;
-    box-shadow : 0 4px 8px rgba(0,0,0,0.2);
-    border-radius : 0px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    min-width: 200px;
+    max-width: 250px;
+    box-sizing: border-box;
+    gap: 10px;
 }
 
+/* Horizontal flex for icon + stats */
 .flexbox-horizontal {
-    display : flex;
-    justify-content : center;
-    align-items : center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
 }
 
 .image-size img {
-    height : 30px;
-    width : 30px;
+    height: 40px;
+    width: 40px;
 }
 
-.active {
-    background-color : black !important;
-    color : white !important;
-    transition : background-color 0.5s ease, color 0.5s ease !important;
-}
-
-.duration-filters-button {
-    border : none;
-    background-color : white;
-    color : black;
-    cursor : pointer;
-    font-family : "Cabin", sans-serif;
-    font-size : 0.7rem;
-    padding : 5px;
-    box-shadow : 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.barchart {
-    width : 50%;
-    background-color : white;
-    display : flex;
-    justify-content : center;
-    /* align-items : center; */
-    flex-flow : column;
-    text-align : center;
-}
-
-.piechart {
-    display : flex;
-    justify-content : center;
-    align-items : center;
-}
-
-.chart-container p {
-    font-size : 1.1rem;
-    font-family : "Cabin", sans-serif;
-}
-
-.chart-container { 
-    display : flex;
-}
-
-.duration-filters-button:hover {
-    background-color : black;
-    color : white;
-    transition : background-color 0.5s ease, color 0.5s ease;
+/* Stats text */
+.stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
 }
 
 .number-font {
-   font-size : 1.2rem !important;
-   color : black !important;
-}
-
-.stats{
-    display : flex;
-    flex-direction : column;
-    font-family : "Cabin", sans-serif;
-    /* align-items : center; */
-    justify-content : center;
-    gap : 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
 }
 
 .stats span {
-    font-size : 0.9rem;
-    color : gray;
+    font-size: 0.9rem;
+    color: gray;
+}
+
+/* Duration buttons */
+.duration-filters-button {
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-family: "Cabin", sans-serif;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.duration-filters-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.active {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Chart container */
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/* Bar chart and Pie chart boxes */
+.barchart, .piechart {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    flex: 1 1 400px; /* flexible width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.chart-container p {
+    font-size: 1.1rem;
+    font-family: "Cabin", sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+
+/* Medium screens ≤1024px */
+@media screen and (max-width: 1024px) {
+    .orders-stats-div {
+        min-width: 180px;
+        max-width: 220px;
+        padding: 12px;
+    }
+
+    .number-font {
+        font-size: 1.3rem;
+    }
+}
+
+/* Small screens ≤768px */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .orders-stats-div {
+        width: 90%;
+        max-width: 95%;
+    }
+
+    .barchart, .piechart {
+        flex: 1 1 100%;
+    }
+}
+
+/* Extra small screens ≤425px */
+@media screen and (max-width: 425px) {
+    .orders-stats-div {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .duration-filters-button {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+    }
+
+    .number-font {
+        font-size: 1.1rem;
+    }
 }

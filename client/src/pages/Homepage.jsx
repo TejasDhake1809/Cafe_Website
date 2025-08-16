@@ -45,12 +45,12 @@ const Homepage = () => {
 
         <Descriptionright />
         
-        <Descriptionleft 
+        {/* <Descriptionleft 
         para = {"We don’t just serve great coffee—we create experiences. From live music to tastings, our events bring the community together with something special for everyone."}
         buttontext={"Events"}
         img = {"/Cafe_Events_Photo.jpg"}
         alt = {"Events at a Cafe"}
-        />
+        /> */}
 
         <div className='visiting-hours'>
 
