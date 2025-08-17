@@ -1,7 +1,37 @@
-import order from '../model/orderModel.js';
 import Order from '../model/orderModel.js';
 import Product from '../model/productModel.js';
 import Apriori from 'node-apriori';
+import { generateInvoice } from "../invoice/invoicegenerator.js";
+import path from "path";
+import fs from "fs";
+
+// orderController.js
+
+const downloadInvoice = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id).populate("items.productId");
+    if (!order) return res.status(404).json({ error: "Order not found" });
+
+    const invoicesDir = path.resolve("./invoices");
+    // ✅ Ensure invoices folder exists
+    if (!fs.existsSync(invoicesDir)) {
+      fs.mkdirSync(invoicesDir, { recursive: true });
+    }
+
+    const filePath = path.join(invoicesDir, `invoice_${order._id}.pdf`);
+    generateInvoice(order, filePath);
+
+    // Wait for file to be written before sending
+    setTimeout(() => {
+      res.download(filePath);
+    }, 1000);
+
+  } catch (error) {
+    console.error("Error generating invoice:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 const getOrders = async (req,res) => {
     try {
@@ -9,6 +39,27 @@ const getOrders = async (req,res) => {
         const sortField = field || 'createdAt';
         const sortValue = Number(value) || -1;
         const orders = await Order.find().sort({[sortField] : sortValue}).limit(Number(limit) || 0);
+        return res.status(200).json(orders);
+    } catch (error) {
+        return res.status(500).json({error : error.message})
+    }
+}
+
+const updateOrderStatus = async (req,res) => {
+    try {
+        console.log("PATCH /update-status/:id called with id:", req.params.id, "body:", req.body);
+        const updatedOrder = await Order.findByIdAndUpdate(req.params.id, 
+            {delivery_status : req.body.delivery_status}, {new : true});
+        res.status(200).json(updatedOrder);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+const getOrdersUserDashboard = async (req,res) => {
+    try {
+        const { email } = req.query; 
+        const orders = await Order.find({email}).sort({createdAt : -1});
         return res.status(200).json(orders);
     } catch (error) {
         return res.status(500).json({error : error.message})
@@ -258,4 +309,4 @@ const getOverviewStats = async (req,res) => {
     }
 }
 
-export {getOrders, getOrderStats, getBarChartStats, getPieChartStats, getDataAnalytics, getOverviewStats};
+export {downloadInvoice, getOrders, getOrderStats, getBarChartStats, getPieChartStats, getDataAnalytics, getOverviewStats, getOrdersUserDashboard, updateOrderStatus};

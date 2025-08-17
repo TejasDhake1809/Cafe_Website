@@ -177,6 +177,21 @@
   color: var(--text-primary);
 }
 
+.order-invoice {
+  background-color : black;
+  color : white;
+  border-radius : 20px;
+  padding : 5px 10px;
+  border : none;
+  font-family : "Cabin";
+  cursor : pointer;
+  font-size : 1rem;
+}
+
+.order-invoice:hover {
+  background-color : rgba(0,0,0,0.7);
+}
+
 /* --- Status Badges --- */
 .status-badge {
   padding: 0.25rem 0.75rem;

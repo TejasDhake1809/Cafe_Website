@@ -14,6 +14,12 @@ const userSchema = new Schema({
     password : {
         type : String,
         required : true
+    },
+
+    perms : {
+        type : String,
+        default : "Customer",
+        enum : ["Customer", "Admin"]
     }
 })
 

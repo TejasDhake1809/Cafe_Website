@@ -141,6 +141,7 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     text-align: left;
+    background-color : white;
 }
 
 .update-order-status-table th {

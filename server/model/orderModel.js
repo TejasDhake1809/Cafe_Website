@@ -14,10 +14,10 @@ const orderSchema = new Schema ({
             count: { type: Number, required: true }  // how many ordered
         }
     ],
-    delivery_status : {type : String, default : "pending", enum: ["pending", "delivered", "cancelled"]},
+    delivery_status : {type : String, default : "pending", enum: ["pending", "preparing", "delivered", "cancelled"]},
     payment_type : {type : String, enum: ['cash', 'online']},
-    cash_order_id : {type : Number},
-    razorpay_order_id : {type : String},
+    cash_order_id : {type : Number, unique : true},
+    razorpay_order_id : {type : String, unique : true},
     razorpay_payment_id : {type : String},
     razorpay_signature : {type : String },
     createdAt : {

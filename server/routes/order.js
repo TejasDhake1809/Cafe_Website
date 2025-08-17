@@ -1,5 +1,5 @@
 import express from 'express';
-import { getOrders, getOrderStats, getBarChartStats, getPieChartStats, getDataAnalytics, getOverviewStats } from '../controllers/orderController.js';
+import { downloadInvoice, getOrders, getOrderStats, getBarChartStats, getPieChartStats, getDataAnalytics, getOverviewStats, getOrdersUserDashboard, updateOrderStatus } from '../controllers/orderController.js';
 
 const router = express.Router();
 
@@ -20,4 +20,14 @@ router.get('/data', getDataAnalytics);
 
 //get data for overview page
 router.get('/overview', getOverviewStats);
+
+//get orders for user dashboard page
+router.get('/get-all-orders', getOrdersUserDashboard);
+
+//update order status
+router.patch('/update-status/:id', updateOrderStatus);
+
+//generate order invoice 
+router.get("/:id/invoice", downloadInvoice);
+
 export default router;

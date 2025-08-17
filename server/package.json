@@ -23,6 +23,7 @@
     "multer": "^2.0.1",
     "node-apriori": "^1.0.0",
     "nodemon": "^3.1.10",
+    "pdfkit": "^0.17.1",
     "razorpay": "^2.9.6",
     "react-hot-toast": "^2.5.2",
     "stripe": "^18.3.0",

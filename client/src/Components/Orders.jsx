@@ -208,7 +208,7 @@ const Orders = () => {
                     </th>
 
                     <th>Invoice</th>
-                    <th>Cancel</th>
+                    <th>Update/Cancel</th>
                 </tr>
             </thead>
             <tbody>
@@ -223,6 +223,7 @@ const Orders = () => {
                             date = {item.createdAt}
                             delivery_status = {item.delivery_status}
                             email = {item.email}
+                            id = {item._id}
                         />
                     )
                 })}
