@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;  
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order, onStatusChange }) => {
   const getStatusClass = (status) => {
     switch (status) {
       case 'pending': return 'status-preparing';
@@ -35,14 +35,44 @@ const OrderCard = ({ order }) => {
   }
 };
 
+const handleClick = async (orderId) => {
+  try {
+    const res = await axios.patch(`${baseUrl}/api/orders/update-status/${orderId}`, {
+      delivery_status: "cancelled"
+    });
+
+    if (res) {
+      toast.success("Order status updated successfully");
+      // ✅ notify parent to update state
+      if (typeof onStatusChange === "function") {
+        onStatusChange(orderId, "cancelled");
+      }
+    }
+  } catch (error) {
+    toast.error("Error in updating order status");
+    console.error(error);
+  }
+};
+
+
 
   return (
     <div className="order-card">
       <div className="card-header">
         <h3>Order {order._id}</h3>
         <div className={`status-badge ${getStatusClass(order.delivery_status)}`}>
-          {order.delivery_status}
+          {order.delivery_status} 
         </div>
+        
+        {/* cross button */}
+        {order.delivery_status !== "cancelled" && <button className="close-btn" onClick={() => handleClick(order._id)}>
+          <img 
+            className='image' 
+            src="https://img.icons8.com/?size=100&id=63688&format=png&color=000000" 
+            alt="close" 
+          />
+        </button>}
+
       </div>
       <div className="card-body">
         <ul>

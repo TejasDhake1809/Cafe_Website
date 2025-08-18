@@ -1,0 +1,53 @@
+# ------------------------------
+# Global ignores
+# ------------------------------
+node_modules/
+.env
+*.env
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+*.pid
+*.seed
+*.pid.lock
+
+# ------------------------------
+# Client (React)
+# ------------------------------
+client/node_modules/
+client/build/
+client/dist/
+client/.env
+client/.DS_Store
+
+# React testing / coverage
+client/coverage/
+client/.vscode/
+client/.idea/
+
+# ------------------------------
+# Server (Node/Express)
+# ------------------------------
+server/node_modules/
+server/.env
+server/.DS_Store
+server/coverage/
+server/logs/
+server/tmp/
+server/uploads/
+server/fonts/
+server/invoice/
+server/invoices/
+
+# ------------------------------
+# Editor / System files
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db

@@ -60,3 +60,20 @@ tr {
 .round { 
   border-radius : 20px;
 }
+
+/* cross/close button */
+.close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto; /* pushes to right */
+  display: flex;
+  align-items: center;
+}
+
+.close-btn:hover .image {
+  filter: brightness(0.8);
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
+}

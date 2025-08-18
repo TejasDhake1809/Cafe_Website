@@ -7,21 +7,21 @@ const OrderUpdate = (props) => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [dstatus, setDStatus] = useState(props.delivery_status);
   const handleClick = async () => {
-    try {
-      console.log("this is dstatus",dstatus);
-      const res = await axios.patch(`${baseUrl}/api/orders/update-status/${props.id}`, {
-        delivery_status : dstatus
-      });
-      if (res) {
-        toast.success("Order status updated successfully");
-        console.log("this is res.data",res.data);
-        // props.onStatusChange(props.id, dstatus);
+      try {
+        console.log("this is dstatus",dstatus);
+        const res = await axios.patch(`${baseUrl}/api/orders/update-status/${props.id}`, {
+          delivery_status : dstatus
+        });
+        if (res) {
+          toast.success("Order status updated successfully");
+          console.log("this is res.data",res.data);
+          // props.onStatusChange(props.id, dstatus);
+        }
+      } catch (error) {
+        toast.error("Error in updating order status");
+        console.error(error);
       }
-    } catch (error) {
-      toast.error("Error in updating order status");
-      console.error(error);
-    }
-}
+  }
 
 // OrderUpdate.jsx (frontend)
 const downloadInvoice = async (orderId) => {
@@ -44,6 +44,8 @@ const downloadInvoice = async (orderId) => {
     console.error(error);
   }
 };
+
+
 
 
   return (

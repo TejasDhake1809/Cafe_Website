@@ -29,6 +29,15 @@ useEffect(() => {
   fetchOrders();
 }, [user])
 
+const handleOrderStatusChange = (orderId, newStatus) => {
+  setOrders((prevOrders) =>
+    prevOrders.map((o) =>
+      o._id === orderId ? { ...o, delivery_status: newStatus } : o
+    )
+  );
+};
+
+
   return (
     <div className="dashboard-container">
       <header className="user-dashboard-header">
@@ -46,7 +55,7 @@ useEffect(() => {
           <h2>Active Orders</h2>
           {orders.length > 0 ? (
             <div className="order-grid">
-              {orders.filter(order => order.delivery_status === "pending").map(order => <OrderCard key={order._id} order={order} />)}
+              {orders.filter(order => order.delivery_status === "pending" || order.delivery_status === "preparing").map(order => <OrderCard key={order._id} order={order} onStatusChange={handleOrderStatusChange} />)}
             </div>
           ) : (
             <p className="no-orders-message">You have no active orders.</p>
@@ -57,7 +66,7 @@ useEffect(() => {
           <h2>Past Orders</h2>
           {orders.length > 0 ? (
             <div className="order-grid">
-              {orders.filter(order => order.delivery_status === "delivered").map(order => <OrderCard key={order._id} order={order} />)}
+              {orders.filter(order => order.delivery_status === "delivered").map(order => <OrderCard key={order._id} order={order}/>)}
             </div>
           ) : (
             <p className="no-orders-message">You have no past orders.</p>
