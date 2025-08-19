@@ -1,5 +1,6 @@
 /* UserDashboard.css */
-
+/* --- Import Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 /* --- Scoped Variables for Dashboard --- */
 .dashboard-container {
   --primary-bg: #f4f1eb;
@@ -10,8 +11,8 @@
   --border-color: #e0d8cd;
   --shadow-color: rgba(61, 44, 33, 0.1);
 
-  --status-preparing-bg: #fef3c7;
-  --status-preparing-text: #92400e;
+  --status-pending-bg: #fef3c7;
+  --status-pending-text: #92400e;
   --status-ready-bg: #d1fae5;
   --status-ready-text: #065f46;
   --status-completed-bg: #e5e7eb;
@@ -27,8 +28,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Import Font --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 
 /* --- Header --- */
 .user-dashboard-header {
@@ -201,9 +201,14 @@
   text-transform: capitalize;
 }
 
+.status-badge.status-pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-text);
+}
+
 .status-badge.status-preparing {
-  background-color: var(--status-preparing-bg);
-  color: var(--status-preparing-text);
+  background-color: #dbeafe; /* light blue */
+  color: #1e40af;           /* dark blue text */
 }
 
 .status-badge.status-ready {

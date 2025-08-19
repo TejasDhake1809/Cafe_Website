@@ -7,13 +7,16 @@ const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const OrderCard = ({ order, onStatusChange }) => {
   const getStatusClass = (status) => {
     switch (status) {
-      case 'pending': return 'status-preparing';
+      case 'pending': return 'status-pending';
+      case 'preparing' : return 'status-preparing'
       case 'delivered': return 'status-ready';
       case 'cancelled': return 'status-completed';
       default: return '';
     }
   };
 
+
+  //creates invoice using pdfkit and stores in blob object
   const downloadInvoice = async (orderId) => {
   try {
     const response = await axios.get(
@@ -24,11 +27,11 @@ const OrderCard = ({ order, onStatusChange }) => {
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const a = document.createElement("a");
     a.href = url;
-    a.download = `invoice_${orderId}.pdf`;
+    a.download = `invoice_${orderId}.pdf`; //temporary url
     document.body.appendChild(a);
-    a.click();
+    a.click(); //clicks the download link
     a.remove();
-    window.URL.revokeObjectURL(url); // cleanup
+    window.URL.revokeObjectURL(url); //removing temporary url
   } catch (error) {
     toast.error("Error downloading invoice");
     console.error(error);
@@ -65,7 +68,7 @@ const handleClick = async (orderId) => {
         </div>
         
         {/* cross button */}
-        {order.delivery_status !== "cancelled" && <button className="close-btn" onClick={() => handleClick(order._id)}>
+        {order.delivery_status === "pending" && <button className="close-btn" onClick={() => handleClick(order._id)}>
           <img 
             className='image' 
             src="https://img.icons8.com/?size=100&id=63688&format=png&color=000000" 
@@ -87,7 +90,7 @@ const handleClick = async (orderId) => {
       <div className="card-footer">
         {order.createdAt && <span className="order-date">Date: {new Date(order.createdAt).toLocaleDateString()}</span>}
         <span className="order-total">Total: Rs {order.price.toFixed(2)} </span>
-        <span> <button className='order-invoice' onClick={() => downloadInvoice(order._id)}>Invoice</button> </span> 
+        {order.delivery_status !== "cancelled" && <span> <button className='order-invoice' onClick={() => downloadInvoice(order._id)}>Invoice</button> </span>} 
       </div>
     </div>
   );

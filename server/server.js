@@ -6,6 +6,7 @@ import productRoutes from './routes/product.js'
 import mongoose from 'mongoose';
 import paymentRoutes from './routes/payment.js';
 import orderRoutes from './routes/order.js';
+import { redis } from './lib/redis.js';
 
 const app = express();
 dotenv.config();

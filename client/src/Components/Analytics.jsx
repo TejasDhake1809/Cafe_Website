@@ -47,7 +47,6 @@ import PaymentTypePieChart from './PaymentTypePieChart';
             params : {timeframe : timeframe || 'All'}
            });
            const data = response.data;
-           toast.success("Fetched data"); 
            if (data) {
             setDataStats(prev => ({
                 ...prev,
@@ -74,10 +73,9 @@ import PaymentTypePieChart from './PaymentTypePieChart';
                 const labels = response.data.label;
                 setLabel(labels);
                 setRevenue(pdata);
-                toast.success("Bar chart data successfully fetched");
             } catch (error) {
                 console.error(error.message);
-                toast.error("Bhai jaan galat hua bar chart data");
+                toast.error("Could not fetch bar chart data");
             } 
         }
         fetchBarChartStats();
@@ -91,9 +89,8 @@ import PaymentTypePieChart from './PaymentTypePieChart';
                 setPieStats(udata);
                 // console.log("this is udata : ", udata);
                 // console.log("this is pieStats : ", pieStats);
-                toast.success("Pie chart data successfully fetched");
             } catch (error) {
-                toast.error("Bhai jaan galat hua pie chart data");
+                toast.error("Could not fetch pie chart data");
             }
         }
         fetchPieChartStats();

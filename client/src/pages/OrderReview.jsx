@@ -21,25 +21,31 @@ const OrderReview = () => {
     const [totalAmount, setTotalAmount] = useState(20); 
     const baseUrl = import.meta.env.VITE_API_BASE_URL;  
 
+    const [isDisabled, setIsDisabled] = useState(false);
+
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
     };
 
     const handleClick = async () => {
+        setIsDisabled(true);
         const toastId = toast.loading("Creating Order");
         try {
             if (!user || !user.email) {
                 toast.error("Please log in to continue", {id : toastId});
+                setIsDisabled(false);
                 return;
             }
 
             if (!order) {
                 toast.error("Order is missing", {id : toastId});
+                setIsDisabled(false);
                 return;
             }
 
             if (!address) {
                     toast.error("Please enter a delivery address", {id : toastId});
+                    setIsDisabled(false);
                     return;
             }
             const seqRes = await axios.post(`${baseUrl}/api/payment/next-sequence`);
@@ -72,6 +78,7 @@ const OrderReview = () => {
             
         } catch (error) {
             toast.error(error.message);
+            setIsDisabled(false);
             setTimeout(() => {
                         toast.dismiss(toastId);
 
@@ -183,24 +190,37 @@ const OrderReview = () => {
 
                 {selectedOption==="cash" && <div className="paybycash">
                     <button 
+                        disabled={isDisabled}
                         onMouseEnter={() => setHover(true)}
                         onMouseLeave={() => setHover(false)}
                         style={{
-                            backgroundColor : hover ? "white" : "#08ccbc",
-                            color : hover ? "#08ccbc" : "white",
-                            border : hover ? "1px solid #08ccbc" : "none",
-                            transition : "background-color 0.5s ease, color 0.5s ease",
-                            cursor : "pointer",
-                            width : "100%",
-                            height : "40px",
-                            borderRadius : "20px",
-                            fontFamily : "Cabin",
-                            fontSize : "1.1rem"
-
+                            backgroundColor: isDisabled 
+                                ? "#cccccc" // greyed out background when disabled
+                                : hover 
+                                    ? "white" 
+                                    : "#08ccbc",
+                            color: isDisabled 
+                                ? "#666666" // darker grey text when disabled
+                                : hover 
+                                    ? "#08ccbc" 
+                                    : "white",
+                            border: isDisabled 
+                                ? "1px solid #cccccc" 
+                                : hover 
+                                    ? "1px solid #08ccbc" 
+                                    : "none",
+                            transition: "background-color 0.5s ease, color 0.5s ease",
+                            cursor: isDisabled ? "not-allowed" : "pointer", // show not-allowed cursor
+                            width: "100%",
+                            height: "40px",
+                            borderRadius: "20px",
+                            fontFamily: "Cabin",
+                            fontSize: "1.1rem",
+                            opacity: isDisabled ? 0.6 : 1, // dim look when disabled
                         }}
                         onClick={handleClick}
                         >
-                        Proceed to Pay
+                        {!isDisabled? "Proceed To Pay" : "Processing..."}
                     </button>
                 </div> }
                 

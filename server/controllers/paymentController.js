@@ -6,6 +6,8 @@ import Order from '../model/orderModel.js';
 import Counter from '../model/counterModel.js';
 import mongoose from 'mongoose';
 import Product from '../model/productModel.js';
+import { sendEmail } from "../utils/email.js";
+
 dotenv.config();
 
 const razorpay = new Razorpay({
@@ -90,7 +92,77 @@ const addOrder = async (req,res) => {
         )
             await session.commitTransaction();
             session.endSession();
-            return res.status(200).json(order);
+
+
+        //sending mail of order
+        await sendEmail({
+    to: email,
+    subject: "Your Cafe Velvet Roast Order Confirmation",
+    text: `Your order has been placed successfully! Thank you for your order! Order ID: ${order._id}, Total: ₹${order.price}`,
+    html: `
+            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f8f8; padding: 20px; border-radius: 8px; max-width: 600px; margin: 20px auto; border: 1px solid #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+                    <tr>
+                        <td align="center" style="background-color: #6F4E37; padding: 25px 20px; color: #ffffff; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                            <h1 style="margin: 0; font-size: 28px; font-weight: bold; line-height: 1.2;">
+                                ☕ Order Confirmation from Cafe Velvet Roast! ☕
+                            </h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 30px;">
+                            <p style="font-size: 18px; color: #333333; margin-top: 0; margin-bottom: 20px; line-height: 1.6;">
+                                Dear Customer,
+                            </p>
+                            <p style="font-size: 18px; color: #333333; margin-bottom: 20px; line-height: 1.6;">
+                                Thank you for your recent order with <strong style="color: #6F4E37;">Cafe Velvet Roast</strong>! We're thrilled to prepare your delicious items.
+                                Your order has been successfully placed and is being processed.
+                            </p>
+                            
+                            <h3 style="font-size: 22px; color: #6F4E37; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #D2B48C; padding-bottom: 10px;">
+                                Order Details:
+                            </h3>
+                            <p style="font-size: 16px; color: #555555; margin-bottom: 10px;">
+                                <strong style="color: #333333;">Order ID:</strong> <span style="font-weight: normal;">${order._id}</span>
+                            </p>
+                            <p style="font-size: 16px; color: #555555; margin-bottom: 10px;">
+                                <strong style="color: #333333;">Delivery Address:</strong> <span style="font-weight: normal;">${order.address}</span>
+                            </p>
+
+                            <h3 style="font-size: 22px; color: #6F4E37; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #D2B48C; padding-bottom: 10px;">
+                                Items Ordered:
+                            </h3>
+                            <div style="margin-bottom: 20px;">
+                                ${order.items.map(item => `
+                                    <p style="font-size: 16px; color: #555555; margin-bottom: 5px;">
+                                        <strong style="color: #333333;">${item.name}</strong> x ${item.count} - ₹${item.price.toFixed(2)} each
+                                    </p>
+                                `).join('')}
+                            </div>
+
+                            <p style="font-size: 16px; color: #555555; margin-bottom: 20px;">
+                                <strong style="color: #333333;">Total Amount:</strong> <span style="font-size: 20px; font-weight: bold; color: #E67E22;">₹${order.price}</span>
+                            </p>
+
+                            <p style="font-size: 18px; color: #333333; margin-top: 30px; line-height: 1.6;">
+                                We appreciate your business and look forward to serving you!
+                            </p>
+                            <p style="font-size: 16px; color: #6F4E37; margin-top: 25px; margin-bottom: 0;">
+                                Warmly, <br>
+                                The Cafe Velvet Roast Team
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="background-color: #F5DEB3; padding: 20px; font-size: 14px; color: #6F4E37; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                            <p style="margin: 0;">&copy; ${new Date().getFullYear()} Cafe Velvet Roast. All rights reserved.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    `,
+    }).catch((err) => console.error("Email sending failed:", err.message));
+        return res.status(200).json(order);
 
     } catch (error) {
         await session.abortTransaction();

@@ -56,19 +56,19 @@ const downloadInvoice = async (orderId) => {
         <td>{props.payment_type}</td>
 
         <td>
-          <select value={dstatus} onChange={(e) => setDStatus(e.target.value)} className={`status-update status ${dstatus}`}> 
+          {dstatus === "delivered" ? <p className={`status-update status ${dstatus}`}>delivered</p>: dstatus ==="cancelled" ? <p className={`status-update status ${dstatus}`}>cancelled</p> : <select disabled={dstatus === "delivered" || dstatus === "cancelled"} value={dstatus} onChange={(e) => setDStatus(e.target.value)} className={`status-update status ${dstatus}`}> 
               <option value="pending">pending</option> 
               <option  value="delivered">delivered</option>  
               <option value="preparing">preparing</option>
               <option value="cancelled">cancelled</option>      
-            </select>
+            </select>}
         </td>
 
        <td>{new Date(props.date).toLocaleDateString()}</td>
         <td> {props.delivery_status !== "cancelled" && <button className='update' onClick={() => downloadInvoice(props.id)}> <img className='image' src="https://img.icons8.com/?size=100&id=6ybQ6Vq2SHjV&format=png&color=000000"></img> </button> } </td>
         <td> 
-          {props.delivery_status !== "cancelled" && <button className='update' onClick={handleClick}> <img className='image round' src="https://img.icons8.com/?size=100&id=63262&format=png&color=000000" alt="tick icon" /> </button>}
-          {props.delivery_status !== "cancelled" && <img className='image' src="https://img.icons8.com/?size=100&id=63688&format=png&color=000000"></img>} 
+          {props.delivery_status !== "cancelled" && props.delivery_status !== "delivered"  && <button className='update' onClick={handleClick}> <img className='image round' src="https://img.icons8.com/?size=100&id=63262&format=png&color=000000" alt="tick icon" /> </button>}
+          {props.delivery_status !== "cancelled" && props.delivery_status !== "delivered" && <img className='image' src="https://img.icons8.com/?size=100&id=63688&format=png&color=000000"></img>} 
             
         </td>
     </tr>

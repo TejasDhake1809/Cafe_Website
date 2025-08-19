@@ -40,11 +40,11 @@ a {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family : "Oswald", sans-serif;
-    font-weight : 500;
+    font-family : "Cabin", sans-serif;
+    font-weight : 700;
     padding: 10px;
     height: 3em;
-    background-color: #B49C89; /* Add a background color to make the navbar visible */
+    background-color: #B49C89;
     text-decoration: none;
     position: fixed;
     top: 0;
@@ -56,7 +56,7 @@ a {
 }
 
 .navbar h1 {
-    font-size: 30px;
+    /* font-size: 30px; */
     margin: 0; /* Prevent extra margin that might affect alignment */
 }
 
@@ -100,18 +100,52 @@ a {
 }
 
 .dropdown-content {
-    display : none;
-    position : absolute;
-    background-color: #f9f9f9;
-    min-width: 140px;
-    height : 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
+    display: none;
+    position: absolute;
+    top: 100%; /* drops directly below the user email */
+    left: 0;
+    background-color: #ffffff;
+    min-width: 160px; /* minimum size */
+    padding: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    z-index: 10;
+
+
+    /* Smooth transition */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease-in-out;
 }
 
+.dropdown-content {
+  font-size: 0.7rem !important;
+}
+
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content p {
+    margin: 0;
+    padding: 8px 16px;
+    color: #2C2C2C;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-content p:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .menu-toggle {
@@ -129,7 +163,10 @@ a {
   display : flex;
   align-items : center;
   justify-content : space-between;
-  font-size : 1.5rem;
+}
+
+.font-size {
+  font-size : 1.7rem !important;
 }
 
 .main-links {
@@ -137,6 +174,10 @@ a {
   align-items : center;
   justify-content : space-between;
   width : 25%;
+}
+
+.dropdown-content p a {
+  font-size : 0.8rem !important;
 }
 
 /* Mobile layout */
