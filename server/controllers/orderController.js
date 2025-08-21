@@ -1,6 +1,6 @@
 import Order from '../model/orderModel.js';
 import Product from '../model/productModel.js';
-import Apriori from 'node-apriori';
+// import Apriori from 'node-apriori';
 import { generateInvoice } from "../invoice/invoicegenerator.js";
 import path from "path";
 import fs from "fs";

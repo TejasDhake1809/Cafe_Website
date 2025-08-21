@@ -1,7 +1,5 @@
-import React from 'react'
 import axios from 'axios';
 import toast from 'react-hot-toast';
-
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;  
 const OrderCard = ({ order, onStatusChange }) => {
