@@ -1,121 +1,148 @@
 .add-item-wrapper {
-    height : 100vh;
-    width : 100vw;
-    display : flex;
-    flex-flow : column;
-    justify-content : center;
-    align-items : center;
-    padding : 10px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 .add-item-form {
-    display : flex;
-    flex-flow : column;
-    font-family : "Cabin", sans-serif;
-    font-size : 1.2rem;
-    gap : 20px;
-    max-height : 100%;
-    max-width : 100%;
+    display: flex;
+    flex-flow: column;
+    font-family: "Cabin", sans-serif;
+    font-size: 1.2rem;
+    gap: 20px;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .add-item-name-category {
-    display : flex;
-    align-items : center;
-    /* justify-content : center; */
-    gap : 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .add-item-element {
-    display : flex;
-    flex-flow : column;
-    gap : 10px;
-    color : gray;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    color: gray;
+}
+
+/* Hide the ugly default file input */
+.file-input {
+  display: none;
+}
+
+/* Custom styled label as button */
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Cabin", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #04AA6D;
+}
+
+.file-label:hover {
+  background-color: white;
+  color: #04AA6D;
+}
+
+/* Show selected file name nicely */
+.file-name {
+  margin-left: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
 }
 
 .add-item-name-category input {
-    border : none;
-    height : 7vh;
-    width : 20vw;
-    /* padding : 10px; */
-    font-size : 1.1rem;
-    border-bottom : 1px solid black;
-    background-color : transparent;
-    font-family : "Cabin", sans-serif;
+    border: none;
+    height: 7vh;
+    width: 20vw;
+    font-size: 1.1rem;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    font-family: "Cabin", sans-serif;
 }
 
 .add-item-name-category input:hover {
-    background-color : rgba(0,0,0,0.07);
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
 .add-item-name-category select {
-    height : 7vh;
-    width : 15vw;
-    font-family : "Cabin", sans-serif;
-    text-align : center;
-    font-size : 1.1rem;
-    border : 1px solid black;
-    background-color : transparent;
-    cursor : pointer;
-}
-
-.add-item-name-category select:hover {
+    height: 7vh;
+    width: 15vw;
+    font-family: "Cabin", sans-serif;
+    text-align: center;
+    font-size: 1.1rem;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .add-item-description {
-    display : flex;
-    flex-flow : column;
+    display: flex;
+    flex-flow: column;
 }
 
 .add-item-description textarea {
-    width : 100%;
-    height : 20vh;
-    display : flex;
+    width: 100%;
+    height: 20vh;
+    display: flex;
 }
 
 .add-item-image-price {
-    display : flex;
-    align-items : center;
-    /* justify-content : center; */
-    gap : 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-.add-item-image-price input {
-    border : none;
-    height : 7vh;
-    width : 20vw;
-    /* padding : 10px; */
-    font-size : 1.1rem;
-    border-bottom : 1px solid black;
-    background-color : transparent;
-    font-family : "Cabin", sans-serif;
-    cursor : pointer;
-    display : flex;
-    align-items : center;
+/* Price Input Styling */
+.add-item-image-price input[type="number"] {
+  border: none;
+  height: 7vh;
+  width: 20vw;
+  font-size: 1.1rem;
+  border-bottom: 1px solid black;
+  background-color: transparent;
+  font-family: "Cabin", sans-serif;
+  padding-left: 5px;
+  transition: background-color 0.2s ease;
 }
 
-.add-item-image-price input:hover {
-    background-color : rgba(0,0,0,0.07);
+.add-item-image-price input[type="number"]:hover {
+  background-color: rgba(0, 0, 0, 0.07);
 }
 
-.file-input {
-    /* display : none; */
+.add-item-image-price input[type="number"]:focus {
+  outline: none;
+  border-bottom: 2px solid #04AA6D; /* green highlight */
 }
 
 .add-item-button {
-    height : 7vh;
-    width : 20vw;
-    margin : auto;
-    font-size : 1.2rem;
-    font-family : "Cabin", sans-serif;
-    border-radius : 10px;
-    border : 1px solid black;
-    background-color : #04AA6D;
-    color : white;
-    cursor : pointer;
+    height: 7vh;
+    width: 20vw;
+    margin: auto;
+    font-size: 1.2rem;
+    font-family: "Cabin", sans-serif;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #04AA6D;
+    color: white;
+    cursor: pointer;
 }
 
 .add-item-button:hover {
-    background-color : white;
-    color : #04AA6D;
-    transition : background-color 0.5s ease, color 0.5s ease;
+    background-color: white;
+    color: #04AA6D;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }

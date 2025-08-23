@@ -1,176 +1,177 @@
-.menuCardWrap { 
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    width : 18vw;
-    /* border : 1px solid black; */
-    /* justify-content : center;
-    align-items : center; */
-    place-items : center;
-    overflow: hidden; /* optional: clips extra content */
-    text-align : center;
-    /* border-top-left-radius: 50px;
-    border-top-right-radius: 50px; */
-    border-radius : 60px;
-    font-family : "Cabin", sans-serif;
-    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.2);
-    background-color : #604411;
-    color : white;
+.menuCardWrap {
+  display: flex;
+  flex-direction: row;
+  width: 420px;           /* Wider card */
+  border-radius: 20px;
+  background: #fff;
+  color: #333;
+  font-family: "Cabin", sans-serif;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 15px auto;
 }
 
-.menuCardWrap img {
-    height : 200px;
-    width : 200px;
-    /* object-fit: cover; */
-    border-top-left-radius: 60px;
-    border-top-right-radius: 60px;
+.menuCardWrap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .menuCardImage {
-    height : 200px;
-    width : 100%;
-    background-color : white;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;  /* Circle image */
+  overflow: hidden;
+  flex-shrink: 0;
+  margin: 15px;
+  border: 3px solid #04AA6D;
+}
+
+.menuCardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .menuCardDetails {
-    display : flex;
-    /* grid-template-rows: repeat(4, 1fr); */
-    /* place-items : center; */
-    flex-flow : column;
-    /* border : 1px solid black; */
-    width : 100%;
-    height : auto;
-    margin-top : 10px;
-    margin-bottom : 10px;
-    justify-content : flex-start;
-    align-items : center;
-}
-
-.menuCardDetails span {
-    display : block;
-    padding-left : 10px;
-    padding-right : 10px;
-}
-
-.br {
-    height : 10px;
-}
-
-.menuCardDescription {
-    font-size : 1em;
-    font-weight : 400;
-    /* border : 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 20px;
+  flex: 1;
 }
 
 .menuCardName {
-    font-size : 1.75em;
-    font-weight : 500;
-    /* border : 1px solid black; */
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.menuCardDescription {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+  line-height: 1.3;
 }
 
 .menuCardPrice {
-    font-size : 1.4em;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #04AA6D;
+  margin: 5px 0;
 }
 
 .menuCardOrderButton {
-    display : flex;
-    flex-flow : row wrap;
-    justify-content : center;
-    align-items : center;
-    height : auto;
-    gap : 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
 }
 
 .menuCardOrderButton p {
-    display : inline;
-    font-size : 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 28px;
+  text-align: center;
 }
 
-.menuCardOrderButton button{
-    background-color : black;
-    color : white;
-    height : 40px;
-    width : 40px;
-    border-radius : 20px;
-    font-family : "Cabin", sans-serif;
-    border : none;
-    cursor : pointer;
+.menuCardOrderButton button {
+  background-color: #04AA6D;
+  color: white;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .menuCardOrderButton button:hover {
-    background-color : white;
-    color : black;
-    transition : background-color 0.5s ease;
+  background-color: #028a57;
+  transform: scale(1.1);
 }
 
-/* Base styles unchanged */
-
-/* Tablet (max-width: 768px) */
-@media screen and (max-width: 768px) {
+/* Responsiveness */
+@media screen and (max-width: 1024px) {
   .menuCardWrap {
-    width: 40vw;
-    border-radius: 40px;
+    width: 90%;
   }
-
-  .menuCardWrap img {
-    height: 100%;
-    width: 100%;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+  .menuCardImage {
+    width: 100px;
+    height: 100px;
   }
-
-  .menuCardDetails span {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
   .menuCardName {
-    font-size: 1.5em;
+    font-size: 1.2rem;
   }
-
+  .menuCardDescription {
+    font-size: 0.85rem;
+  }
   .menuCardPrice {
-    font-size: 1.2em;
-  }
-
-  .menuCardOrderButton button {
-    height: 35px;
-    width: 35px;
     font-size: 1rem;
   }
+}
 
+@media screen and (max-width: 768px) {
+  .menuCardWrap {
+    width: 95%;
+  }
+  .menuCardImage {
+    width: 90px;
+    height: 90px;
+  }
+  .menuCardName {
+    font-size: 1.1rem;
+  }
+  .menuCardDescription {
+    font-size: 0.8rem;
+  }
+  .menuCardPrice {
+    font-size: 0.95rem;
+  }
+  .menuCardOrderButton button {
+    height: 28px;
+    width: 28px;
+    font-size: 0.85rem;
+  }
   .menuCardOrderButton p {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
   }
 }
 
-/* Mobile (max-width: 480px) */
 @media screen and (max-width: 480px) {
   .menuCardWrap {
-    width: 80vw;
-    border-radius: 30px;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
   }
-
-  .menuCardWrap img {
-    height: 100%;
-    width: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+  .menuCardImage {
+    width: 100px;
+    height: 100px;
+    margin: 15px 0 5px 0;
   }
-
+  .menuCardDetails {
+    align-items: center;
+    text-align: center;
+  }
   .menuCardName {
-    font-size: 1.3em;
+    font-size: 1rem;
   }
-
+  .menuCardDescription {
+    font-size: 0.75rem;
+  }
   .menuCardPrice {
-    font-size: 1em;
-  }
-
-  .menuCardOrderButton button {
-    height: 30px;
-    width: 30px;
     font-size: 0.9rem;
   }
-
+  .menuCardOrderButton {
+    justify-content: center;
+  }
+  .menuCardOrderButton button {
+    height: 26px;
+    width: 26px;
+    font-size: 0.8rem;
+  }
   .menuCardOrderButton p {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
   }
 }

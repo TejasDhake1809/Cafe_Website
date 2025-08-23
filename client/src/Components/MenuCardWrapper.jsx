@@ -31,6 +31,7 @@ const MenuCardWrapper = ({ category, items, updateCount }) => {
             name={product.name}
             image={product.image}
             price={product.price}
+            description={product.description}
             count={existing ? existing.count : 0}
             updateCount={(id, name, newCount) =>
               updateCount(product, newCount)

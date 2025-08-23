@@ -19,9 +19,9 @@ const Overview = () => {
                     params : {limit : 10}
                 });
                 setOrders(res.data);
-                console.log(res.data);
-                console.log("this is in orders variable of usestate", orders);
-                toast.success("We have successfully fetched orders");
+                // console.log(res.data);
+                // console.log("this is in orders variable of usestate", orders);
+                // toast.success("We have successfully fetched orders");
             } catch (error) {
                 toast.error("Failed to fetch orders from database");
             }
@@ -54,10 +54,10 @@ const Overview = () => {
                 const labels = response.data.label;
                 setLabel(labels);
                 setRevenue(pdata);
-                toast.success("Bar chart data successfully fetched");
+                // toast.success("Bar chart data successfully fetched");
             } catch (error) {
                 console.error(error.message);
-                toast.error("Bhai jaan galat hua bar chart data");
+                toast.error("Couldnt fetch bar chart data");
             } 
         }
         fetchBarChartStats();

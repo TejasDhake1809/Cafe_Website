@@ -1,8 +1,8 @@
-import React from 'react'
 import './AddItem.css'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const AddItem = () => {
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -24,50 +24,61 @@ const AddItem = () => {
         }
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!selectedFile){
-            alert('choose an image for the food item');
-            return;
-        }
+   const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        let imageUrl = '';
-
-        try {
-            const formData = new FormData();
-            formData.append('file', selectedFile);
-
-            const uploadImage = await axios.post(`${baseUrl}/api/upload`, formData);
-            imageUrl = uploadImage.data.imageUrl;
-
-        } catch (error) {
-            console.log(error);
-        }
-        
-
-        const finalData = {
-            ...data,
-            image : imageUrl,
-            price : parseFloat(data.price), // convert string to number here
-        };
-        console.log({finalData});
-
-        try {
-            const upload = await axios.post(`${baseUrl}/api/add-item`, finalData);
-            if (upload){
-                setData({
-                    name: '',
-                    category: '',
-                    description: '',
-                    image: '',
-                    price: '',
-                });
-                navigate('/Dashboard');
-            }
-        } catch (error) {
-            console.error('Error uploading data', error);
-        }
+    if (!selectedFile) {
+        toast.error("Please choose an image for the food item");
+        return;
     }
+
+    let imageUrl = "";
+
+    try {
+        // Upload image to backend
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+
+        const uploadImage = await axios.post(`${baseUrl}/api/upload`, formData, {
+            params: { itemName: data.name },
+        });
+
+        imageUrl = uploadImage.data.imageUrl;
+
+    } catch (error) {
+        toast.error(error.response?.data?.error || "Failed to upload image");
+        return; // stop further execution
+    }
+
+    const finalData = {
+        ...data,
+        image: imageUrl,
+        price: parseFloat(data.price),
+    };
+
+    try {
+        // Add the item to DB
+        const response = await axios.post(`${baseUrl}/api/add-item`, finalData);
+
+        if (response.status === 200) {
+            toast.success("Item added successfully!");
+            setData({
+                name: "",
+                category: "",
+                description: "",
+                image: "",
+                price: "",
+            });
+            setSelectedFile(null);
+            navigate("/Dashboard");
+        }
+
+    } catch (error) {
+        // Display backend error if exists, else fallback
+        toast.error(error.response?.data?.error || "Failed to add item");
+    }
+};
+
 
   return (
     <div className="add-item-wrapper">
@@ -109,9 +120,17 @@ const AddItem = () => {
 
             <div className="add-item-image-price">
                 <div className="add-item-element">
-                    <label>Image</label>
-                    <input className="file-input" type="file" accept="image/*" onChange={handleFileChange}></input>
-                </div>
+                    <label htmlFor="fileUpload" className="file-label">Choose Image</label>
+                    <input
+                        id="fileUpload"
+                        className="file-input"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                    />
+                    {selectedFile && <span className="file-name">{selectedFile.name}</span>}
+                    </div>
+
 
                 <div className="add-item-element">
                     <label>Price</label>

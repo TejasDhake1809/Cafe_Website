@@ -1,15 +1,12 @@
 import Product from '../model/productModel.js'
-import { v2 as cloudinary } from 'cloudinary';
 import fs from 'fs';
 import dotenv from 'dotenv';
-import Order from '../model/orderModel.js'
+import { s3 } from '../lib/s3.js';
+import { PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import {v4 as uuid } from 'uuid';
+import crypto from 'crypto';
 
 dotenv.config();
-cloudinary.config({
-    cloud_name : process.env.CLOUDINARY_NAME,
-    api_key:    process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-})
 
 const addItem = async(req,res) => {
     const {name, category, description, image, price} = req.body;
@@ -23,14 +20,37 @@ const addItem = async(req,res) => {
 
 const imageUpload = async (req,res) => {
     try {
-        const result = await cloudinary.uploader.upload(req.file.path, {
-            folder : 'signed_cafe', 
-        });
+        const filepath = fs.readFileSync(req.file.path);
+        const hash = crypto.createHash("md5").update(filepath).digest("hex");
+        const {name} = req.query;
+        const exists = await Product.findOne({name});
+        if (exists) {
+            fs.unlinkSync(req.file.path);
+            return res.status(401).json({error : "Item exists"});
+        }
+        const uniquekey = `signed_cafe/${hash}`;
+        const result = `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${uniquekey}`;
+        const check = await Product.findOne({image : result});
+        if (check) {
+            fs.unlinkSync(req.file.path);
+            return res.status(401).json({error : "Same Image exists"});
+        }
+        const params = {
+            Bucket : process.env.AWS_BUCKET_NAME,
+            Key : uniquekey,
+            Body : filepath,
+            ContentType : req.file.mimetype,
+        }
+
+        await s3.send(new PutObjectCommand(params));
+
+        //public url
+        // const result = `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${uniquekey}`;
 
         fs.unlinkSync(req.file.path);
-        res.status(200).json({imageUrl : result.secure_url});
+        res.status(200).json({imageUrl : result});
     } catch (error) {
-        console.error('Cloudinary Upload error', error);
+        console.error('AWS S3 Upload error', error);
         res.status(500).json({error : error.message || 'Failed to upload image'})
     }
 }
@@ -64,6 +84,20 @@ const getAnItem = async (req,res) => {
 const deleteItem = async (req,res) => {
     try {
         const id = req.params.id;
+        const item = await Product.findById(id);
+        const key = item.image.split(".amazonaws.com/")[1];
+        try {
+            const params = {
+                Bucket: process.env.AWS_BUCKET_NAME,
+                Key: key,
+            };
+            await s3.send(new DeleteObjectCommand(params));
+            console.log("Object deleted successfully:", key);
+        } catch (error) {
+            console.error("Error deleting object:", error);
+            return res.status(400).json("Failed to delete item from bucket");
+        }
+
         const result = await Product.deleteItem(id);
         if (result) {
             res.status(200).json({success : "Item successfully deleted"})
